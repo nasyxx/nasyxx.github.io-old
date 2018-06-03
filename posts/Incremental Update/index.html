@@ -42,7 +42,7 @@ There are more things in heaven and earth, Horatio, than are dreamt.
     <head>
         <meta charset="utf-8">
 
-        <title>grass</title>
+        <title>Incremental Update</title>
 
         <meta name="HandheldFriendly" content="True">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -90,21 +90,27 @@ There are more things in heaven and earth, Horatio, than are dreamt.
             </header>
 
             <main class="main" id="main">
-                <header>
-    <h2 class="main-h2 no-before" id="writings">
-        <a href="#Posts tagged " grass""> <i class="far fa-star h2_icon"></i></a>
-        Posts tagged "grass"
-    </h2>
-</header>
-<div id="blogs-list" class="blogs-list">
-    
-        <article class="blogs-list-article">
-            
-    <header class="blogs-list-header">
-        <a href="../../posts/%E6%9C%89%E8%B6%A3%E7%9A%84%E5%BA%93001/">
-            <h3>有趣的库 1 -- gron</h3>
+                <section id="blog" class="blog">
+    <header class="blog-header">
+        
+    <h1 id="Incremental Update">
+        <a href="#Incremental Update">
+            <i class="fas fa-star h1_icon"></i>
         </a>
-    </header>
+        Incremental Update
+    </h1>
+    <section class="toc-n" style="cursor: context-menu;">
+        <h3>Table of Content</h3>
+    </section>
+    <section class="blog-content-table">
+
+    </section>
+    <div class="h1-fixed opacity">
+        <p class="h1 h1-fixed" style="position: fixed; cursor: context-menu; z-index: 3;" onclick="show_hide_toc();">Incremental Update</p>
+        <section class="blog-content-table h1-fixed hidden" style="position: fixed; z-index: 2; top: 50px; border-top: medium none; box-shadow: none;">
+
+        </section>
+    </div>
 
 
 <section class="metas">
@@ -118,36 +124,115 @@ There are more things in heaven and earth, Horatio, than are dreamt.
     
         <section class="metas-time">
             <i class="icon far fa-calendar-alt" title="time"></i>
-            <time datetime="May 12, 2018">May 12, 2018</time>
+            <time datetime="July 28, 2017">July 28, 2017</time>
         </section>
     
 
     
         <section class="metas-summary">
             <i class="icon fas fa-quote-left" title="summary"></i>
-            <span>在 GitHub 上看到的有趣的库gron</span>
+            <span>Compare the files within two folders.</span>
         </section>
     
 
     
         <section class="metas-categories">
             <i class="icon fas fa-tags" title="categories"></i>
-            <ul><a href="../../categories/Grass/">Grass</a></ul>
+            <ul><a href="../../categories/Algorithm/">Algorithm</a>, <a href="../../categories/Fish/">Fish</a></ul>
         </section>
     
 
     
         <section class="metas-tags">
             <i class="icon fas fa-hashtag" title="tags"></i>
-            <ul><a href="../../tags/grass/">grass</a>, <a href="../../tags/open-source/">open-source</a>, <a href="../../tags/repositories/">repositories</a>, <a href="../../tags/%E8%8D%89/">草</a></ul>
+            <ul><a href="../../tags/algorithm/">algorithm</a>, <a href="../../tags/fish/">fish</a>, <a href="../../tags/%E7%AE%97%E6%B3%95/">算法</a>, <a href="../../tags/%E9%B1%BC/">鱼</a></ul>
         </section>
     
 </section>
 
-        </article>
-    
+    </section>
+    <section>
+        <nav class="text-table-of-contents"><ul>
+<li><a href="#about-this-algorithm">About this algorithm</a><ul>
+<li><a href="#how">How</a></li>
+</ul></li>
+<li><a href="#implemented-in-python">Implemented in Python</a></li>
+<li><a href="#why-this">Why this</a></li>
+</ul></nav>
+<h2 id="about-this-algorithm">About this algorithm</h2>
+<p>This algorithm aims to compare the files within two folders. The files within B folder are more than the A folder. Put these files which are not in A folder into a separate folder C. If files already in C folder, pass it.</p>
+<h3 id="how">How</h3>
+<p>Use the nature and operation of the collection.</p>
+<h2 id="implemented-in-python">Implemented in Python</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode Python"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="im">import</span> os</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="im">import</span> shutil</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="kw">def</span> incremental_update(a_folder_path: <span class="bu">str</span>,</a>
+<a class="sourceLine" id="cb1-6" data-line-number="6">                       b_folder_path: <span class="bu">str</span>,</a>
+<a class="sourceLine" id="cb1-7" data-line-number="7">                       c_folder_path: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</a>
+<a class="sourceLine" id="cb1-8" data-line-number="8">    <span class="co">&quot;&quot;&quot;Incremental update.</span></a>
+<a class="sourceLine" id="cb1-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb1-10" data-line-number="10"><span class="co">    Args:</span></a>
+<a class="sourceLine" id="cb1-11" data-line-number="11"><span class="co">        a_folder_path str: A folder path.</span></a>
+<a class="sourceLine" id="cb1-12" data-line-number="12"><span class="co">        b_folder_path str: B folder path.</span></a>
+<a class="sourceLine" id="cb1-13" data-line-number="13"><span class="co">        c_folder_path str: C folder path.</span></a>
+<a class="sourceLine" id="cb1-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb1-15" data-line-number="15"><span class="co">    Return:</span></a>
+<a class="sourceLine" id="cb1-16" data-line-number="16"><span class="co">        None</span></a>
+<a class="sourceLine" id="cb1-17" data-line-number="17"><span class="co">    &quot;&quot;&quot;</span></a>
+<a class="sourceLine" id="cb1-18" data-line-number="18">    <span class="co"># Compare files between 3 folders.</span></a>
+<a class="sourceLine" id="cb1-19" data-line-number="19">    c_files <span class="op">=</span> (<span class="bu">set</span>(os.listdir(a_folder_path))</a>
+<a class="sourceLine" id="cb1-20" data-line-number="20">               <span class="op">-</span> <span class="bu">set</span>(os.listdir(b_folder_path))</a>
+<a class="sourceLine" id="cb1-21" data-line-number="21">               <span class="op">-</span> <span class="bu">set</span>(os.listdir(c_folder_path)))</a>
+<a class="sourceLine" id="cb1-22" data-line-number="22"></a>
+<a class="sourceLine" id="cb1-23" data-line-number="23">    <span class="cf">if</span> <span class="kw">not</span> os.path.isdir(c_folder_path):</a>
+<a class="sourceLine" id="cb1-24" data-line-number="24">        os.mkdir(c_folder_path)</a>
+<a class="sourceLine" id="cb1-25" data-line-number="25"></a>
+<a class="sourceLine" id="cb1-26" data-line-number="26">    <span class="kw">def</span> _copy(f_path: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</a>
+<a class="sourceLine" id="cb1-27" data-line-number="27">        <span class="co">&quot;&quot;&quot;Copy file from B to C.</span></a>
+<a class="sourceLine" id="cb1-28" data-line-number="28"></a>
+<a class="sourceLine" id="cb1-29" data-line-number="29"><span class="co">        Args:</span></a>
+<a class="sourceLine" id="cb1-30" data-line-number="30"><span class="co">            f_path: str. The file in B folder.</span></a>
+<a class="sourceLine" id="cb1-31" data-line-number="31"><span class="co">        &quot;&quot;&quot;</span></a>
+<a class="sourceLine" id="cb1-32" data-line-number="32">        shutil.copy(</a>
+<a class="sourceLine" id="cb1-33" data-line-number="33">            os.path.join(b_folder_path, f_path),</a>
+<a class="sourceLine" id="cb1-34" data-line-number="34">            os.path.join(c_folder_path, f_path))</a>
+<a class="sourceLine" id="cb1-35" data-line-number="35"></a>
+<a class="sourceLine" id="cb1-36" data-line-number="36">    <span class="cf">for</span> f_path <span class="kw">in</span> c_files:</a>
+<a class="sourceLine" id="cb1-37" data-line-number="37">        _copy(f_path)</a>
+<a class="sourceLine" id="cb1-38" data-line-number="38"></a></code></pre></div>
+<h2 id="why-this">Why this</h2>
+<p>A friend of mine wants to use it to do something interesting (I’m not sure…).</p>
+    </section>
+</article>
+<hr />
+<div id="gitalk-comment" onclick="init_comment()">
+    <p>Click to load comments</p>
 </div>
-
+<!-- gitalk -->
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+    function init_comment() {
+        const gitalk = new Gitalk({
+            clientID: '434498d156d6042c22a4',
+            clientSecret: '11c8c6cce2e0c5e23749c0602841c855293476b7',
+            repo: 'comments',
+            owner: 'nasyxx',
+            admin: ['nasyxx'],
+            id: "comment",
+            labels: ['comment'],
+            createIssueManually: true,
+            enableHotKey: true,
+            perPage: 10,
+            // facebook-like distraction free mode
+            distractionFreeMode: false,
+            body: location.href
+        })
+        gitalk.options.id = document.title
+        gitalk.render("gitalk-comment")
+    }
+</script>
 
             </main>
 

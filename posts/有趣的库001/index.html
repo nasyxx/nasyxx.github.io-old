@@ -42,7 +42,7 @@ There are more things in heaven and earth, Horatio, than are dreamt.
     <head>
         <meta charset="utf-8">
 
-        <title>grass</title>
+        <title>有趣的库 1 -- gron</title>
 
         <meta name="HandheldFriendly" content="True">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -90,21 +90,27 @@ There are more things in heaven and earth, Horatio, than are dreamt.
             </header>
 
             <main class="main" id="main">
-                <header>
-    <h2 class="main-h2 no-before" id="writings">
-        <a href="#Posts tagged " grass""> <i class="far fa-star h2_icon"></i></a>
-        Posts tagged "grass"
-    </h2>
-</header>
-<div id="blogs-list" class="blogs-list">
-    
-        <article class="blogs-list-article">
-            
-    <header class="blogs-list-header">
-        <a href="../../posts/%E6%9C%89%E8%B6%A3%E7%9A%84%E5%BA%93001/">
-            <h3>有趣的库 1 -- gron</h3>
+                <section id="blog" class="blog">
+    <header class="blog-header">
+        
+    <h1 id="有趣的库 1 -- gron">
+        <a href="#有趣的库 1 -- gron">
+            <i class="fas fa-star h1_icon"></i>
         </a>
-    </header>
+        有趣的库 1 -- gron
+    </h1>
+    <section class="toc-n" style="cursor: context-menu;">
+        <h3>Table of Content</h3>
+    </section>
+    <section class="blog-content-table">
+
+    </section>
+    <div class="h1-fixed opacity">
+        <p class="h1 h1-fixed" style="position: fixed; cursor: context-menu; z-index: 3;" onclick="show_hide_toc();">有趣的库 1 -- gron</p>
+        <section class="blog-content-table h1-fixed hidden" style="position: fixed; z-index: 2; top: 50px; border-top: medium none; box-shadow: none;">
+
+        </section>
+    </div>
 
 
 <section class="metas">
@@ -144,10 +150,66 @@ There are more things in heaven and earth, Horatio, than are dreamt.
     
 </section>
 
-        </article>
-    
+    </section>
+    <section>
+        <nav class="text-table-of-contents"><ul>
+<li><a href="#gron">gron</a></li>
+<li><a href="#postscript">Postscript</a></li>
+</ul></nav>
+<h2 id="gron">gron</h2>
+<p><a href="https://github.com/tomnomnom/gron">gron</a> 是一个命令行工具，在你的终端里使用的小工具。效果是，把 <code>JSON</code> 转为一行一行的，可以被 <code>grep</code> 的形式。下面就来看看是什么样子的，多的就不说了，反正，很有用就是了。</p>
+<p>首先是，用他官方的例子来看看:</p>
+<div class="sourceCode" id="cb1" data-org-language="sh"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" data-line-number="1">▶ <span class="ex">gron</span> <span class="st">&quot;https://api.github.com/repos/tomnomnom/gron/commits?per_page=1&quot;</span> <span class="kw">|</span> <span class="fu">fgrep</span> <span class="st">&quot;commit.author&quot;</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="ex">json</span>[0].commit.author = <span class="dt">{}</span><span class="kw">;</span></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="ex">json</span>[0].commit.author.date = <span class="st">&quot;2016-07-02T10:51:21Z&quot;</span><span class="kw">;</span></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="ex">json</span>[0].commit.author.email = <span class="st">&quot;mail@tomnomnom.com&quot;</span><span class="kw">;</span></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="ex">json</span>[0].commit.author.name = <span class="st">&quot;Tom Hudson&quot;</span><span class="kw">;</span></a></code></pre></div>
+<p>好了，总的来说，就是， <code>gron</code> 加上某个 <code>JSON</code> 的文件或者链接，把这个 <code>JSON</code> 转为这种，key1.key2.key3 = value 的形式，然后，就能很简单的进行下一步 <code>grep</code> 了。</p>
+<p>当然，也能把这样形式的东西转回 <code>JSON</code> 只需要 <code>gron --ungron</code> 即可。</p>
+<div class="sourceCode" id="cb2" data-org-language="sh"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" data-line-number="1">▶ <span class="ex">gron</span> testdata/two.json <span class="kw">|</span> <span class="fu">grep</span> likes <span class="kw">|</span> <span class="fu">grep</span> -v cheese</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="ex">json.likes</span> = []<span class="kw">;</span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="ex">json.likes</span>[0] = <span class="st">&quot;code&quot;</span><span class="kw">;</span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="ex">json.likes</span>[2] = <span class="st">&quot;meat&quot;</span><span class="kw">;</span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5">▶ <span class="ex">gron</span> testdata/two.json <span class="kw">|</span> <span class="fu">grep</span> likes <span class="kw">|</span> <span class="fu">grep</span> -v cheese <span class="kw">|</span> <span class="ex">gron</span> --ungron</a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="kw">{</span></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7">  <span class="st">&quot;likes&quot;</span>:<span class="bu"> [</span></a>
+<a class="sourceLine" id="cb2-8" data-line-number="8">    <span class="st">&quot;code&quot;</span>,</a>
+<a class="sourceLine" id="cb2-9" data-line-number="9">    null,</a>
+<a class="sourceLine" id="cb2-10" data-line-number="10">    <span class="st">&quot;meat&quot;</span></a>
+<a class="sourceLine" id="cb2-11" data-line-number="11">  ]</a>
+<a class="sourceLine" id="cb2-12" data-line-number="12">}</a></code></pre></div>
+<p>更多的请看: <a href="https://github.com/tomnomnom/gron#usage" class="uri">https://github.com/tomnomnom/gron#usage</a></p>
+<h2 id="postscript">Postscript</h2>
+<p>作为第一篇“有趣的库”，我考虑了很久，到底选哪个。最终，抽了个签，选了这样的一个 JSON 的命令行小工具，也没什么可写的…</p>
+    </section>
+</article>
+<hr />
+<div id="gitalk-comment" onclick="init_comment()">
+    <p>Click to load comments</p>
 </div>
-
+<!-- gitalk -->
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+    function init_comment() {
+        const gitalk = new Gitalk({
+            clientID: '434498d156d6042c22a4',
+            clientSecret: '11c8c6cce2e0c5e23749c0602841c855293476b7',
+            repo: 'comments',
+            owner: 'nasyxx',
+            admin: ['nasyxx'],
+            id: "comment",
+            labels: ['comment'],
+            createIssueManually: true,
+            enableHotKey: true,
+            perPage: 10,
+            // facebook-like distraction free mode
+            distractionFreeMode: false,
+            body: location.href
+        })
+        gitalk.options.id = document.title
+        gitalk.render("gitalk-comment")
+    }
+</script>
 
             </main>
 
