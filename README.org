@@ -1,0 +1,16 @@
+#+OPTIONS: ':nil *:t -:t ::t <:t H:4 \n:nil ^:t arch:headline author:t
+#+OPTIONS: broken-links:nil c:nil creator:nil d:(not "LOGBOOK") date:t e:t
+#+OPTIONS: email:nil f:t inline:t num:nil p:nil pri:nil prop:nil stat:t tags:t
+#+OPTIONS: tasks:t tex:t timestamp:t title:t toc:nil todo:t |:t
+#+TITLE: README
+#+DATE: <2018-06-04 Mon>
+#+AUTHOR: Nasy [[https://nasy.moe]] <Nasy>
+#+EMAIL: echo bmFzeXh4QGdtYWlsLmNvbQo= | base64 -D
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+#+EXCLUDE_TAGS: noexport
+#+CREATOR: Emacs 26.1 (Org mode 9.1.9)
+
+* Nasy Moe
+
+Nasy's personal blog.
