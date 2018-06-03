@@ -1,0 +1,185 @@
+// main: main.styl
+
+body
+    -webkit-font-smoothing: antialiased
+
+
+h1,h2,h3,h4,h5,h6,p,a,footer,tr,ul.org-ul li
+    font-family: $FONT_FAMILY_NORMAL
+    trans(0.3s)
+    hover_box_shadow(2px)
+    border-radius: 5px
+    &:hover
+        background-color: $COLOR_BGT
+
+footer:hover
+    background-color: $COLOR_BGT
+
+h1,.h1
+    color: $COLOR_H1
+    position: relative
+    font-size: $FONT_SIZE_H1
+    padding-left: 2px
+    border-left: 5px solid $COLOR_H1
+    border-radius: 3px
+    &:hover
+        color: darken(@color, 10%)
+        border-left-color: darken(@color, 10%)
+    .h1_icon
+        position: absolute
+        left: -2rem
+        top: -4px
+        font-size: $FONT_SIZE_H2
+        color: $COLOR_H1
+        text-shadow: 0 0 5px
+        svg
+            color: $COLOR_H1
+
+    &.main-title
+        border-left: none
+        .h1_icon
+            position: absolute
+            left: -1.2rem
+            top: -4px
+            font-size: $FONT_SIZE_H2
+            color: $COLOR_H1
+            text-shadow: 0 0 5px
+            svg
+                color: $COLOR_TEXT
+
+
+h2
+    color: $COLOR_H2
+    position: relative
+    font-size: $FONT_SIZE_H2
+    padding-left: 2px
+    border-left: 5px solid $COLOR_H2
+    border-radius: 3px
+    &:hover
+        color: darken(@color, 10%)
+        border-left-color: darken(@color, 10%)
+    .h2_icon
+        position: absolute;
+        left: -1.4rem
+        top: -4px
+        font-size: $FONT_SIZE_H3
+        color: $COLOR_H2
+        text-shadow: 0 0 5px
+        svg
+            color: $COLOR_H2
+
+h3
+    font-size: $FONT_SIZE_H3
+    color: $COLOR_H3
+    position: relative
+    padding-left: 2px
+    border-left: 3px solid $COLOR_H3
+    border-radius: 3px
+    &:hover
+        color: darken(@color, 10%)
+        border-left-color: darken(@color, 10%)
+    .h3_icon
+        position: absolute;
+        left: -1.1rem
+        font-size: $FONT_SIZE_P
+        color: $COLOR_H3
+        text-shadow: 0 0 5px
+        svg
+            color: $COLOR_H3
+
+h4
+    color: $COLOR_H4
+    position: relative
+    padding-left: 2px
+    border-left: 3px solid $COLOR_H4
+    border-radius: 3px
+    &:hover
+        color: darken(@color, 10%)
+        border-left-color: darken(@color, 10%)
+    .h4_icon
+        position: absolute;
+        left: -0.65rem
+        font-size: $FONT_SIZE_P
+        color: $COLOR_H4
+        text-shadow: 0 0 5px
+        svg
+            color: $COLOR_H4
+
+a, svg
+    color: $COLOR_LINK
+    trans(0.3s)
+    hover_text_shadow(1px)
+    &:hover
+        color: $COLOR_LINK_LIGHT
+
+p, ul.org-ul li
+    font-size: $FONT_SIZE_P
+    color: $COLOR_TEXT
+    padding: 5px
+    border-radius: 5px
+
+    text_shadow(1px)
+    hover_box_shadow(2px)
+    &:hover
+        background-color: $COLOR_BGT
+        color: darken($COLOR_TEXT, 5)
+
+    &, b
+        &::selection
+            color: $COLOR_H2
+
+footer
+    font-size: smaller
+    color: $COLOR_LINK_LIGHT
+    font-family: $FONT_FAMILY_NORMAL
+
+
+table
+    font-family: $FONT_FAMILY_NORMAL
+    font-size: $FONT_SIZE_P
+    color: $COLOR_TEXT
+
+
+ul
+    padding: 0
+    font-family: $FONT_FAMILY_NORMAL
+    font-size: $FONT_SIZE_P
+    color: $COLOR_TEXT
+
+    li
+        list-style: none;
+        padding: 0 5px
+        color: $COLOR_TEXT
+
+        font-family: $FONT_FAMILY_NORMAL
+        font-size: $FONT_SIZE_P
+        p,
+        a
+            margin: 0
+    &.org-ul
+        li
+            list-style: inside
+
+hr
+    border: 2px dashed $COLOR_H2
+
+.hidden
+    display: none!important
+
+.opacity
+    opacity: 0
+
+ol
+    list-style: none
+
+*
+    trans(0.3s)
+    &::selection
+        background-color: $COLOR_BG3T
+
+    &, *:after, *:after
+        box-sizing: border-box
+
+@media (max-width: 768px)
+    .h1_icon, .h2_icon, .h3_icon, .h4_icon
+        display: none

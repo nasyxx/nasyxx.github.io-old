@@ -1,0 +1,60 @@
+// main: main.styl
+
+// Colors
+$COLOR_BG = #0f0c29
+$COLOR_BGT = rgba(15, 12, 41, 0.7)
+$COLOR_BG1 = #302b63
+$COLOR_BG1T = rgba(48, 43, 99, 0.7)
+$COLOR_BG2 = #24243e
+$COLOR_BG2T = rgba(36, 36, 62, 0.7)
+$COLOR_BG3 = #4D3664
+$COLOR_BG3T = rgba(77, 54, 100, 0.7)
+$COLOR_LINK = #A8D8EA
+$COLOR_LINK_LIGHT = #B2E672
+$COLOR_TEXT = #E1FFCF
+$COLOR_TITLE = #FFAAA5
+$COLOR_H1 = #FFAAA5
+$COLOR_H2 = #9EFCB4
+$COLOR_H3 = #E0F9B5
+$COLOR_H4 = #FFCFDF
+
+// Font
+$FONT_SIZE_TITLE = 2.3rem
+$FONT_SIZE_H1 = 2rem
+$FONT_SIZE_H2 = 1.5rem
+$FONT_SIZE_H3 = 1.3rem
+$FONT_SIZE_P = 1rem
+$FONT_SIZE_CODE = 0.9em
+
+$FONT_FAMILY_NORMAL = "Chalkboard", "comic sans", "PingFang SC", "Meslo LG", "sans-serif"
+$FONT_FAMILY_MONO = "FiraCode-retina", "Fira Code", "hermit","operator mono book","Menlo", "Meslo LG", monospace
+
+// Transition styles
+$EASE-IN-SINE = cubic-bezier(0.47, 0, 0.745, 0.715);
+
+// ALL
+trans(s)
+    transition: all s $EASE-IN-SINE
+    &:before,
+    &:after
+        box-sizing: border-box
+
+
+// Hover shadows
+hover_text_shadow_c(s, c)
+    &:hover
+        text-shadow: 0 0 s c, 0 0 s * 2
+hover_text_shadow(s)
+    hover_text_shadow_c(s, $COLOR_BG)
+
+hover_box_shadow_c(s, c)
+    &:hover
+        box-shadow: 0 s s + 3 c
+hover_box_shadow(s)
+    hover_box_shadow_c(s, $COLOR_BG)
+
+text_shadow(s)
+    text-shadow: 0 0 s $COLOR_BG, 0 0 s * 2 $COLOR_BG
+
+box_shadow(s, s2 = 3, c = $COLOR_BG)
+    box-shadow: 0 s s + s2 c

@@ -1,0 +1,35 @@
+<section id="blog" class="blog">
+    <header class="blog-header">
+        $partial("templates/metas.html")$
+    </section>
+    <section>
+        $body$
+    </section>
+</article>
+<hr />
+<div id="gitalk-comment" onclick=init_comment()>
+    <p>Click to load comments</p>
+</div>
+<!-- gitalk -->
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+    function init_comment() {
+        const gitalk = new Gitalk({
+            clientID: '434498d156d6042c22a4',
+            clientSecret: '11c8c6cce2e0c5e23749c0602841c855293476b7',
+            repo: 'comments',
+            owner: 'nasyxx',
+            admin: ['nasyxx'],
+            id: "comment",
+            labels: ['comment'],
+            createIssueManually: true,
+            enableHotKey: true,
+            perPage: 10,
+            // facebook-like distraction free mode
+            distractionFreeMode: false,
+            body: location.href
+        })
+        gitalk.options.id = document.title
+        gitalk.render("gitalk-comment")
+    }
+</script>

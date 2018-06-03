@@ -1,0 +1,63 @@
+$if(in-post)$
+    <h1 id="$title$">
+        <a href="#$title$">
+            <i class="fas fa-star h1_icon"></i>
+        </a>
+        $title$
+    </h1>
+    <section class="toc-n" style="cursor: context-menu;">
+        <h3>Table of Content</h3>
+    </section>
+    <section class="blog-content-table">
+
+    </section>
+    <div class="h1-fixed opacity">
+        <p class="h1 h1-fixed" style="position: fixed; cursor: context-menu; z-index: 3;" onclick=show_hide_toc();>$title$</p>
+        <section class="blog-content-table h1-fixed hidden" style="position: fixed; z-index: 2; top: 50px; border-top: medium none; box-shadow: none;">
+
+        </section>
+    </div>
+$else$
+    <header class="blogs-list-header">
+        <a href="$url$">
+            <h3>$title$</h3>
+        </a>
+    </header>
+$endif$
+
+<section class="metas">
+    $if(author)$
+        <section class="metas-author">
+            <i class="icon fas fa-pencil-alt" title="author"></i>
+            <span>$author$</span>
+        </section>
+    $endif$
+
+    $if(date)$
+        <section class="metas-time">
+            <i class="icon far fa-calendar-alt" title="time"></i>
+            <time datetime="$date$">$date$</time>
+        </section>
+    $endif$
+
+    $if(summary)$
+        <section class="metas-summary">
+            <i class="icon fas fa-quote-left" title="summary"></i>
+            <span>$summary$</span>
+        </section>
+    $endif$
+
+    $if(categories)$
+        <section class="metas-categories">
+            <i class="icon fas fa-tags" title="categories"></i>
+            <ul>$categories$</ul>
+        </section>
+    $endif$
+
+    $if(tags)$
+        <section class="metas-tags">
+            <i class="icon fas fa-hashtag" title="tags"></i>
+            <ul>$tags$</ul>
+        </section>
+    $endif$
+</section>

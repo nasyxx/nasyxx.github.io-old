@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<!--
+
+|
+|             *         *
+|                  .                .
+|           .
+|     *                      ,
+|                   .
+|
+|                               *
+|          |\___/|
+|          )    -(             .              '
+|         =\  -  /=
+|           )===(       *
+|          /   - \
+|          |-    |
+|         /   -   \     0.|.0
+|  NASY___\__( (__/_____(\=/)__+1s____________
+|  ______|____) )______|______|______|______|_
+|  ___|______( (____|______|______|______|____
+|  ______|____\_|______|______|______|______|_
+|  ___|______|______|______|______|______|____
+|  ______|______|______|______|______|______|_
+|  ___|______|______|______|______|______|____
+
+
+Author           : Nasy https://nasy.moe <Nasy>
+Date             : Mar 4, 2018
+Email            : echo bmFzeXh4QGdtYWlsLmNvbQo= | base64 -D
+Filename         : index.html
+Last modified by : Nasy
+License          : MIT
+
+
+There are more things in heaven and earth, Horatio, than are dreamt.
+  From "Hamlet"
+-->
+
+<html>
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>$title$</title>
+
+        <meta name="HandheldFriendly" content="True">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="description" content="Nasy 的花园，栽花养鱼闲聊的地方～">
+        <meta name="twitter:creator" content="@nasyxx">
+
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Nasy Land">
+        <meta property="og:url" content="https://nasy.moe/">
+        <meta property="og:site_name" content="Nasy Land">
+        <meta property="og:description" content="Nasy 的花园，栽花养鱼闲聊的地方～">
+
+        <link rel="stylesheet" href="/styles/main.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    </head>
+    <body>
+        <div class="container", id="container">
+
+            <header class="header" id="header">
+                <section class="header-section">
+                    <h1 class="header-section-title main-title no-before">
+                        <a href="NasyLand"> <i class="fas fa-star h1_icon"></i> </a>
+                        Nasy Land
+                    </h1>
+                </section>
+                <section class="header-section">
+                    <nav class="header-section-nav nav">
+                        <ul>
+                            <li class="header-section-section-nav-list nav-list">
+                                <a href="https://nasy.me" title="Who is Nasy?">Nasy</a>
+                            </li>
+                            <li class="header-section-section-nav-list nav-list">
+                                <a href="/" title="Blog">Blog</a>
+                            </li>
+                            <li class="header-section-section-nav-list nav-list">
+                                <a href="https://pools.nasy.moe" title="Pools">Pools</a>
+                            </li>
+                            <li class="header-section-section-nav-list nav-list">
+                                <a href="/About#About" title="About">About</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </section>
+                $if(index)$
+                    <section class="header-section ">
+                        <p>Find me on
+                            <a href="https://github.com/nasyxx" title="GitHub">
+                                <i class="icon fab fa-github" title="GitHub"></i></a>, <a href="https://twitter.com/nasyxx" title="Twitter"><i class="icon fab fa-twitter" title="Twitter"></i></a> and <a href="mailto:nasyxx+nasymoe@gmail.com?Subject=Hi%20Nasy"><i class="icon fas fa-envelope" title="Mail"></i></a>.
+                        </p>
+                    </section>
+                $endif$
+            </header>
+
+            <main class="main" id="main">
+                $body$
+            </main>
+
+            <footer>
+                <section class="footer-section">
+                    <nav class="header-section-nav nav">
+                        <ul>
+                            <li class="footer-section-nav-list nav-list">
+                                <a href="https://nasy.me" title="Who is Nasy?">Nasy</a>
+                            </li>
+                            <li class="footer-section-nav-list nav-list">
+                                <a href="/" title="Blog">Blog</a>
+                            </li>
+                            <li class="footer-section-nav-list nav-list"><a href="https://pools.nasy.moe" title="Pools">Pools</a>
+                            </li>
+                            <li class="footer-section-nav-list nav-list">
+                                <a href="/blog/2018/05/03/About#About" title="About">About</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <nav>
+                        <ul>
+                            <li class="footer-section-nav-list nav-list">
+                                <a href="https://laobubu.net" title="laobubu">Laobubu</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </section>
+                <section class="footer-section copyright">
+                    <p>Copyright © 2018 Nasy</p>
+                </section>
+                <div style="text-align: right;">
+                    <p style="position: fixed; bottom: 0px; right: 10vw;" onclick=up2top(); >
+                        <i class="fas fa-rocket fa-lg" title="up to top" data-fa-transform="rotate--45"></i>
+                    </p>
+                </div>
+            </footer>
+        </div>
+        <!-- highlight -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+        <!-- momentjs -->
+        <script defer src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.0/moment.min.js"></script>
+
+        <!-- fontawesome -->
+        <script async defer src="/scripts/fa-brands.min.js"></script>
+        <script async defer src="/scripts/fa-solid.min.js"></script>
+        <script async defer src="/scripts/fa-regular.min.js"></script>
+        <script async defer src="/scripts/fontawesome.min.js"></script>
+
+        <script src="/scripts/main.js" charset="utf-8"></script>
+
+        <!-- MathJax -->
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+            displayAlign: "center",
+            displayIndent: "0em",
+            "HTML-CSS": { scale: 100, linebreaks: { automatic: "false" }, webFont: "TeX" },
+            SVG: { scale: 100, linebreaks: { automatic: "false" }, font: "TeX" },
+            NativeMML: { scale: 100 },
+            TeX: {
+                equationNumbers: {
+                    autoNumber: "AMS"
+                },
+                MultLineWidth: "85%",
+                TagSide: "right",
+                TagIndent: ".8em"
+            },
+            TEX2JAX: { inlineMath: [
+                    ['$', '$'],
+                    ['\\(', '\\)']
+                ] }
+            });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+        <script type="text/javascript">
+            window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+            ga('create', 'UA-102577027-1', 'auto');
+            ga('send', 'pageview');
+        </script>
+        <script async="" src="https://www.google-analytics.com/analytics.js"></script>
+        <script>
+            if (window.performance) {
+                // Gets the number of milliseconds since page load
+                // (and rounds the result since the value must be an integer).
+                var timeSincePageLoad = Math.round(performance.now());
+
+                // Sends the timing hit to Google Analytics.
+                ga('send', 'timing', 'JS Dependencies', 'load', timeSincePageLoad);
+            }
+            function handleOutboundLinkClicks(event) {
+                ga('send', 'event', {
+                eventCategory: 'Outbound Link',
+                eventAction: 'click',
+                eventLabel: event.target.href,
+                transport: 'beacon'
+                });
+            }
+        </script>
+    </body>
+</html>

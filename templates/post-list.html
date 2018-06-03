@@ -1,0 +1,13 @@
+<header>
+    <h2 class="main-h2 no-before" id="writings">
+        <a href="#$showing$"> <i class="far fa-star h2_icon"></i></a>
+        $showing$
+    </h2>
+</header>
+<div id="blogs-list" class="blogs-list">
+    $for(posts)$
+        <article class="blogs-list-article">
+            $partial("templates/metas.html")$
+        </article>
+    $endfor$
+</div>
