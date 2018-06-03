@@ -73,8 +73,8 @@ def get_meta_from_org(path: Path) -> Dict[str, str]:
 def write_out(path: Path) -> None:
     """Write out org file."""
     metadata = get_meta_from_org(path)
-    Path("edit_source").mkdir(exist_ok = True)
-    with (Path("edit_source") / path.name).open("w") as o, path.open() as f:
+    Path("posts").mkdir(exist_ok = True)
+    with (Path("posts") / path.name).open("w") as o, path.open() as f:
         o.write("------------------\n")
         for k, v in metadata.items():
             o.write(k + ": " + v + "\n")
@@ -84,7 +84,7 @@ def write_out(path: Path) -> None:
 
 def hack_about() -> None:
     """Hack about.html."""
-    Path("edit_source/About.org").replace("About.org")
+    Path("posts/About.org").replace("About.org")
 
 
 def main() -> None:

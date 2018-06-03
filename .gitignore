@@ -3,7 +3,7 @@ _cache
 .stack-work
 .ropeproject
 
-/edit_source
+posts/*.org
 
 /About.org
 

@@ -124,8 +124,8 @@ main = hakyllWith config $ do
 
     ---------------------------------------------------------------------------
     -- build up tags and categories
-    tags <- buildTags "edit_source/*.org" (fromCapture "tags/*/index.html")
-    categories <- buildCategories' "edit_source/*.org"
+    tags       <- buildTags "posts/*.org" (fromCapture "tags/*/index.html")
+    categories <- buildCategories' "posts/*.org"
                                    (fromCapture "categories/*/index.html")
 
     tagsRules tags $ \tag pattern' -> do
@@ -180,7 +180,7 @@ main = hakyllWith config $ do
     ---------------------------------------------------------------------------
 
 
-    match "edit_source/*.org" $ do
+    match "posts/*.org" $ do
         route cleanRoute
         compile
             $   myPandocCompiler
@@ -268,7 +268,7 @@ main = hakyllWith config $ do
     create ["index.html"] $ do
         route idRoute
         compile $ do
-            posts <- recentFirst =<< loadAll "edit_source/*"
+            posts <- recentFirst =<< loadAll "posts/*.org"
             let
                 indexCtx
                     = listField
