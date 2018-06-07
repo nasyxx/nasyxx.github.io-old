@@ -51,7 +51,7 @@ def clean_line(line: str) -> str:
 
 def get_all_org_files() -> List[Path]:
     """Get all org files."""
-    return list(Path("blogs/posts").glob("*.org"))
+    return list(Path("blogs").glob("*.org"))
 
 
 def get_meta_from_org(path: Path) -> Dict[str, str]:

@@ -21,3 +21,6 @@ add-header:
 build-web: clean add-header
 	stack exec site build
 .PHONY: build-web
+
+deploy: build-web
+	git checkout master && git add --all && git commit -m "Publish." && git push && git checkout dev
