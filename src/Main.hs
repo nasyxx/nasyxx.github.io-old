@@ -37,7 +37,7 @@ There are more things in heaven and earth, Horatio, than are dreamt.
 -- @Email              : echo bmFzeXh4QGdtYWlsLmNvbQo= | base64 -D
 -- @Filename           : Main.hs
 -- @Last modified by   : Nasy
--- @Last modified time : Jun 4, 2018
+-- @Last modified time : Jun 10, 2018
 -- @License            : MIT
 --
 --------------------------------------------------------------------------------
