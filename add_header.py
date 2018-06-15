@@ -31,7 +31,7 @@ Excited without bugs::
 @date: Jun 3, 2018
 @email: echo bmFzeXh4QGdtYWlsLmNvbQo= | base64 -D
 @filename: add_header.py
-@Last modified time: Jun 4, 2018
+@Last modified time: Jun 12, 2018
 @license: MIT
 
 There are more things in heaven and earth, Horatio, than are dreamt.
@@ -45,8 +45,10 @@ from typing import Dict, List
 
 def clean_line(line: str) -> str:
     """Clean line."""
-    return line.replace("\n", "").replace("<", "").replace(">", "").replace(
-        "#+", "")
+    return line.replace("\n", "")\
+               .replace("<", "")\
+               .replace(">", "")\
+               .replace("#+", "")
 
 
 def get_all_org_files() -> List[Path]:

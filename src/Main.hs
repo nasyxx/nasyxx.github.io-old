@@ -37,7 +37,7 @@ There are more things in heaven and earth, Horatio, than are dreamt.
 -- @Email              : echo bmFzeXh4QGdtYWlsLmNvbQo= | base64 -D
 -- @Filename           : Main.hs
 -- @Last modified by   : Nasy
--- @Last modified time : Jun 10, 2018
+-- @Last modified time : Jun 15, 2018
 -- @License            : MIT
 --
 --------------------------------------------------------------------------------
@@ -219,26 +219,6 @@ main = hakyllWith config $ do
                     )
             >>= relativizeUrls
             >>= cleanIndexUrls
-    -- Cannot finsh it. The About.html is exported by About.org in posts
-    -- match "About.html" $ do
-    --     route cleanRoute
-    --     compile
-    --         $   getResourceBody
-    --         >>= loadAndApplyTemplate
-    --                 t_post
-    --                 (  constField "in-post" "true"
-    --                 <> postCtxWithTags tags
-    --                 <> postCtxWithCats categories
-    --                 <> postCtx
-    --                 )
-    --         >>= loadAndApplyTemplate
-    --                 t_default
-    --                 (  postCtxWithTags tags
-    --                 <> postCtxWithCats categories
-    --                 <> postCtx
-    --                 )
-    --         >>= relativizeUrls
-    --         >>= cleanIndexUrls
 
     create ["tags/index.html"] $ do
         route idRoute
