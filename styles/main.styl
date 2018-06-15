@@ -54,6 +54,7 @@ body
         &-section-nav-list
             padding: 0 15px
             border-left: 2px dashed $COLOR_LINK_LIGHT
+            list-style: none
 
             &:nth-child(1)
                 padding-left: 0
@@ -254,6 +255,11 @@ td
         display: flex
         flex-flow: row
         align-items: baseline
+        border-radius: 10px
+        box_shadow(1px, -1, $COLOR_H2)
+        hover_box_shadow_c(2px, $COLOR_TEXT)
+        &.copyright
+            box-shadow: none
     nav
         padding-right: 10rem
     > div, p, svg

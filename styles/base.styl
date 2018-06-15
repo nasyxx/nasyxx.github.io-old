@@ -4,7 +4,7 @@ body
     -webkit-font-smoothing: antialiased
 
 
-h1,h2,h3,h4,h5,h6,p,a,footer,tr,ul.org-ul li
+h1,h2,h3,h4,h5,h6,p,a,tr,ul.org-ul li
     font-family: $FONT_FAMILY_NORMAL
     trans(0.3s)
     hover_box_shadow(2px)
@@ -12,8 +12,6 @@ h1,h2,h3,h4,h5,h6,p,a,footer,tr,ul.org-ul li
     &:hover
         background-color: $COLOR_BGT
 
-footer:hover
-    background-color: $COLOR_BGT
 
 h1,.h1
     color: $COLOR_H1
@@ -140,14 +138,14 @@ table
     color: $COLOR_TEXT
 
 
-ul
+ul, ol
     padding: 0
     font-family: $FONT_FAMILY_NORMAL
     font-size: $FONT_SIZE_P
     color: $COLOR_TEXT
 
     li
-        list-style: none;
+        list-style: inside
         padding: 0 5px
         color: $COLOR_TEXT
 
@@ -168,9 +166,6 @@ hr
 
 .opacity
     opacity: 0
-
-ol
-    list-style: none
 
 *
     trans(0.3s)
