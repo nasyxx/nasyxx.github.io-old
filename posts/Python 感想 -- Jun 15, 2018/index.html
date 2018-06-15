@@ -131,7 +131,7 @@ There are more things in heaven and earth, Horatio, than are dreamt.
     
         <section class="metas-summary">
             <i class="icon fas fa-quote-left" title="summary"></i>
-            <span>字符串清理 `replace` or `strip` 速度验证以及思考。</span>
+            <span>字符串清理 <code>replace</code> or <code>strip</code> 速度验证以及思考。</span>
         </section>
     
 
@@ -159,13 +159,13 @@ There are more things in heaven and earth, Horatio, than are dreamt.
 <h2 id="验证测试">验证测试</h2>
 <p>两三年前，在某个地方（或许是 cookbook ），看到过一条:</p>
 <blockquote>
-<p>在清理字符串的时候，尽量用 `replace`，因为在效率上高出很多。</p>
+<p>在清理字符串的时候，尽量用 <code>replace</code> ，因为在效率上高出很多。</p>
 </blockquote>
 <p>这两天正好有机会，试了试，事实确实如此。</p>
 <p>直接看结果吧！</p>
 <p>原始字符串是这样的：</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode Python"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" data-line-number="1">test_string <span class="op">=</span> <span class="st">&quot;      ******************sss--------------------       </span><span class="ch">\n</span><span class="st">&quot;</span></a></code></pre></div>
-<p>然后，我的测试呢，也是简单的用了 `timeit`，并没有更深入的去做。</p>
+<p>然后，我的测试呢，也是简单的用了 <code>timeit</code> ，并没有更深入的去做。</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode Python"><code class="sourceCode python"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="op">&gt;&gt;&gt;</span> <span class="op">%</span>timeit test_string.replace(<span class="st">&quot;*&quot;</span>, <span class="st">&quot;&quot;</span>).replace(<span class="st">&quot;-&quot;</span>, <span class="st">&quot;&quot;</span>).replace(<span class="st">&quot; &quot;</span>, <span class="st">&quot;&quot;</span>).replace(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>, <span class="st">&quot;&quot;</span>)</a>
 <a class="sourceLine" id="cb2-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb2-3" data-line-number="3"><span class="fl">1.47</span> µs ± <span class="fl">4.14</span> ns per loop (mean ± std. dev. of <span class="dv">7</span> runs, <span class="dv">1000000</span> loops each)</a>
@@ -173,17 +173,17 @@ There are more things in heaven and earth, Horatio, than are dreamt.
 <a class="sourceLine" id="cb2-5" data-line-number="5"><span class="op">&gt;&gt;&gt;</span> <span class="op">%</span>timeit test_string.strip(<span class="st">&quot; *-&quot;</span>)</a>
 <a class="sourceLine" id="cb2-6" data-line-number="6"></a>
 <a class="sourceLine" id="cb2-7" data-line-number="7"><span class="dv">458</span> ns ± <span class="dv">11</span> ns per loop (mean ± std. dev. of <span class="dv">7</span> runs, <span class="dv">1000000</span> loops each)</a></code></pre></div>
-<p>大概就是这样，`replace` 比 `strip` 的速度优势太大了。</p>
+<p>大概就是这样， <code>replace</code> 比 <code>strip</code> 的速度优势太大了。</p>
 <h2 id="思考">思考</h2>
-<p>正好嘛，最近又更加深入的了解了点文学编程。虽然用 `Python` 要达到文学编程，还有很长的一段路需要走，但是，并不代表，它不能去用那种思想去搞事。于是遇到了一个困扰我的问题：</p>
-<p><strong>在连续几个 `replace` 的情况下，如何有效进行漂亮的注释？</strong></p>
+<p>正好嘛，最近又更加深入的了解了点文学编程。虽然用 <code>Python</code> 要达到文学编程，还有很长的一段路需要走，但是，并不代表，它不能去用那种思想去搞事。于是遇到了一个困扰我的问题：</p>
+<p><strong>在连续几个 <code>replace</code> 的情况下，如何有效进行漂亮的注释？</strong></p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode Python"><code class="sourceCode python"><a class="sourceLine" id="cb3-1" data-line-number="1">string.replace(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>, <span class="st">&quot;&quot;</span>).replace(<span class="st">&quot;&gt;&quot;</span>, <span class="st">&quot;&quot;</span>).replace(<span class="st">&quot;&lt;&quot;</span>, <span class="st">&quot;&quot;</span>).replace(<span class="st">&quot;#+&quot;</span>, <span class="st">&quot;&quot;</span>)</a></code></pre></div>
-<p>一直以来，或者说，知道 `replace` 速度更快之后，一直以来，我的这些字符串替换操作都是能用 `replace` 就不用其他的，不能用的时候，大概就是要用正则的时候了。不过就像大家所知道的那样，一个接一个的 `.replace` 是很丑陋，而且不方便注释，很不文学。虽然也有办法让他对齐 `.` 如下面所示，变得比以前漂亮多了，但是依然不能够很好的加上注释（`\`后面是不能加上注释的）。</p>
+<p>一直以来，或者说，知道 <code>replace</code> 速度更快之后，一直以来，我的这些字符串替换操作都是能用 <code>replace</code> 就不用其他的，不能用的时候，大概就是要用正则的时候了。不过就像大家所知道的那样，一个接一个的 <code>.replace</code> 是很丑陋，而且不方便注释，很不文学。虽然也有办法让他对齐 `.` 如下面所示，变得比以前漂亮多了，但是依然不能够很好的加上注释（`\`后面是不能加上注释的）。</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode Python"><code class="sourceCode python"><a class="sourceLine" id="cb4-1" data-line-number="1">string.replace(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>, <span class="st">&quot;&quot;</span>)<span class="op">\</span></a>
 <a class="sourceLine" id="cb4-2" data-line-number="2">      .replace(<span class="st">&quot;&lt;&quot;</span>, <span class="st">&quot;&quot;</span>) <span class="op">\</span></a>
 <a class="sourceLine" id="cb4-3" data-line-number="3">      .replace(<span class="st">&quot;&gt;&quot;</span>, <span class="st">&quot;&quot;</span>) <span class="op">\</span></a>
 <a class="sourceLine" id="cb4-4" data-line-number="4">      .replace(<span class="st">&quot;#+&quot;</span>, <span class="st">&quot;&quot;</span>)</a></code></pre></div>
-<p>直到我 `Haskell` 写的多了，有一天突然就醒悟了，其实我没必要一定写在 `replace` 的这个地方，我可以把它写成一个函数（虽然这让时间开销变大，似乎又本末倒置了）。</p>
+<p>直到我 <code>Haskell</code> 写的多了，有一天突然就醒悟了，其实我没必要一定写在 <code>replace</code> 的这个地方，我可以把它写成一个函数（虽然这让时间开销变大，似乎又本末倒置了）。</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode Python"><code class="sourceCode python"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">def</span> clean_string(string: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:</a>
 <a class="sourceLine" id="cb5-2" data-line-number="2">    <span class="co">&quot;&quot;&quot;Clean string.</span></a>
 <a class="sourceLine" id="cb5-3" data-line-number="3"></a>
@@ -194,7 +194,7 @@ There are more things in heaven and earth, Horatio, than are dreamt.
 <a class="sourceLine" id="cb5-8" data-line-number="8">                 .replace(<span class="st">&quot;&lt;&quot;</span>, <span class="st">&quot;&quot;</span>) <span class="op">\</span></a>
 <a class="sourceLine" id="cb5-9" data-line-number="9">                 .replace(<span class="st">&quot;&gt;&quot;</span>, <span class="st">&quot;&quot;</span>) <span class="op">\</span></a>
 <a class="sourceLine" id="cb5-10" data-line-number="10">                 .replace(<span class="st">&quot;#+&quot;</span>, <span class="st">&quot;&quot;</span>)</a></code></pre></div>
-<p>这样，我把解释写在函数里面，清理的时候，clean<sub>string</sub>(string) 就好了。</p>
+<p>这样，我把解释写在函数里面，清理的时候， <code>clean_string(string)</code> 就好了。</p>
     </section>
 </article>
 <hr />
