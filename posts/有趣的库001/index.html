@@ -184,8 +184,7 @@ There are more things in heaven and earth, Horatio, than are dreamt.
     </section>
 </article>
 <hr />
-<div id="gitalk-comment" onclick="init_comment()">
-    <p>Click to load comments</p>
+<div id="gitalk-comment">
 </div>
 <!-- gitalk -->
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
@@ -211,6 +210,11 @@ There are more things in heaven and earth, Horatio, than are dreamt.
         
         gitalk.render("gitalk-comment")
     }
+    try{
+        init_comment()
+    }catch{
+        console.log("Not a Blog.")
+    }
 </script>
 
             </main>
@@ -228,7 +232,7 @@ There are more things in heaven and earth, Horatio, than are dreamt.
                             <li class="footer-section-nav-list nav-list"><a href="https://pools.nasy.moe" title="Pools">Pools</a>
                             </li>
                             <li class="footer-section-nav-list nav-list">
-                                <a href="../../blog/2018/05/03/About#About" title="About">About</a>
+                                <a href="../../About#About" title="About">About</a>
                             </li>
                         </ul>
                     </nav>
