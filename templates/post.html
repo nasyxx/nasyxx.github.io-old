@@ -29,7 +29,11 @@
             distractionFreeMode: false,
             body: location.href
         })
-        gitalk.options.id = document.querySelector("title").text
+        $if(comment)$
+        gitalk.options.id = "$comment$"
+        $else$
+        gitalk.options.id = document.querySelector("title").text;
+        $endif$
         gitalk.render("gitalk-comment")
     }
 </script>

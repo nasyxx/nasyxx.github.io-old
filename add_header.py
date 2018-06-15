@@ -67,7 +67,7 @@ def get_meta_from_org(path: Path) -> Dict[str, str]:
         for line in takewhile(lambda x: x != "\n", f):
             k, *vs = re.split(r":\s*", clean_line(line))
             kl, v = k.lower(), "".join(vs)
-            if kl in {"author", "title", "language", "summary"}:
+            if kl in {"author", "title", "language", "summary", "comment"}:
                 res[kl] = v
             elif kl in {"tags", "categories"}:
                 res[kl] = ", ".join(sorted(re.split(r",\s*", v)))
