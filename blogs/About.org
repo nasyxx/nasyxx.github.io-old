@@ -4,6 +4,8 @@
 #+TAGS: about
 #+CATEGORIES: About
 #+SUMMARY: About this blog and nasy, 关于此 blog 和 nasy.
+#+COMMENT: message board
+#+CTITLE: Message Board
 
 * 关于 Nasy
 

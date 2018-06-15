@@ -31,7 +31,7 @@ Excited without bugs::
 @date: Jun 3, 2018
 @email: echo bmFzeXh4QGdtYWlsLmNvbQo= | base64 -D
 @filename: add_header.py
-@Last modified time: Jun 15, 2018
+@Last modified time: Jun 16, 2018
 @license: MIT
 
 There are more things in heaven and earth, Horatio, than are dreamt.
@@ -67,9 +67,10 @@ def get_meta_from_org(path: Path) -> Dict[str, str]:
         for line in takewhile(lambda x: x != "\n", f):
             k, *vs = re.split(r":\s*", clean_line(line))
             kl, v = k.lower(), "".join(vs)
-            if kl in {"author", "title", "language", "summary", "comment"}:
+            if kl in ("author", "title", "language", "summary", "comment",
+                      "ctitle"):
                 res[kl] = v
-            elif kl in {"tags", "categories"}:
+            elif kl in ("tags", "categories"):
                 res[kl] = ", ".join(sorted(re.split(r",\s*", v)))
             elif kl == "date" and v:
                 res[kl] = v[0:10]

@@ -33,6 +33,9 @@
         $else$
         gitalk.options.id = document.querySelector("title").text;
         $endif$
+        $if(ctitle)$
+        gitalk.options.title = "$ctitle$"
+        $endif$
         gitalk.render("gitalk-comment")
     }
     try{
