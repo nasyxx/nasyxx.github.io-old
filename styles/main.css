@@ -331,6 +331,8 @@ code div {
   font-family: "FiraCode-retina", "Fira Code", "hermit", "operator mono book", "Menlo", "Meslo LG", monospace;
 }
 code * {
+  text-rendering: optimizeLegibility;
+  font-family: "FiraCode-retina", "Fira Code", "hermit", "operator mono book", "Menlo", "Meslo LG", monospace;
   max-width: 100vw;
   overflow-x: scroll;
 }

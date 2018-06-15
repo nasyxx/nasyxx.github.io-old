@@ -29,7 +29,7 @@
             distractionFreeMode: false,
             body: location.href
         })
-        gitalk.options.id = document.title
+        gitalk.options.id = document.querySelector("title").text
         gitalk.render("gitalk-comment")
     }
 </script>
