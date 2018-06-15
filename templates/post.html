@@ -7,8 +7,7 @@
     </section>
 </article>
 <hr />
-<div id="gitalk-comment" onclick=init_comment()>
-    <p>Click to load comments</p>
+<div id="gitalk-comment">
 </div>
 <!-- gitalk -->
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
@@ -35,5 +34,10 @@
         gitalk.options.id = document.querySelector("title").text;
         $endif$
         gitalk.render("gitalk-comment")
+    }
+    try{
+        init_comment()
+    }catch{
+        console.log("Not a Blog.")
     }
 </script>
