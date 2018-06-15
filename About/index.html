@@ -250,7 +250,9 @@ There are more things in heaven and earth, Horatio, than are dreamt.
             distractionFreeMode: false,
             body: location.href
         })
-        gitalk.options.id = document.querySelector("title").text
+        
+        gitalk.options.id = document.querySelector("title").text;
+        
         gitalk.render("gitalk-comment")
     }
 </script>
