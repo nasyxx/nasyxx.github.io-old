@@ -4,6 +4,7 @@
 #+TAGS: 草, grass, repositories, open-source
 #+CATEGORIES: Grass
 #+SUMMARY: 在 GitHub 上看到的有趣的库: gron
+#+COMMENT: 有趣的库
 
 * gron
 
