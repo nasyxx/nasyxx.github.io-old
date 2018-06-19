@@ -42,7 +42,7 @@ There are more things in heaven and earth, Horatio, than are dreamt.
     <head>
         <meta charset="utf-8">
 
-        <title>Python 感想 -- Jun 15, 2018</title>
+        <title>Python 感想 -- Jul 19, 2018</title>
 
         <meta name="HandheldFriendly" content="True">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -93,11 +93,11 @@ There are more things in heaven and earth, Horatio, than are dreamt.
                 <section id="blog" class="blog">
     <header class="blog-header">
         
-    <h1 id="Python 感想 -- Jun 15, 2018">
-        <a href="#Python 感想 -- Jun 15, 2018">
+    <h1 id="Python 感想 -- Jul 19, 2018">
+        <a href="#Python 感想 -- Jul 19, 2018">
             <i class="fas fa-star h1_icon"></i>
         </a>
-        Python 感想 -- Jun 15, 2018
+        Python 感想 -- Jul 19, 2018
     </h1>
     <section class="toc-n" style="cursor: context-menu;">
         <h3>Table of Content</h3>
@@ -106,7 +106,7 @@ There are more things in heaven and earth, Horatio, than are dreamt.
 
     </section>
     <div class="h1-fixed opacity">
-        <p class="h1 h1-fixed" style="position: fixed; cursor: context-menu; z-index: 3;" onclick="show_hide_toc();">Python 感想 -- Jun 15, 2018</p>
+        <p class="h1 h1-fixed" style="position: fixed; cursor: context-menu; z-index: 3;" onclick="show_hide_toc();">Python 感想 -- Jul 19, 2018</p>
         <section class="blog-content-table h1-fixed hidden" style="position: fixed; z-index: 2; top: 50px; border-top: medium none; box-shadow: none;">
 
         </section>
@@ -124,14 +124,14 @@ There are more things in heaven and earth, Horatio, than are dreamt.
     
         <section class="metas-time">
             <i class="icon far fa-calendar-alt" title="time"></i>
-            <time datetime="June 15, 2018">June 15, 2018</time>
+            <time datetime="June 19, 2018">June 19, 2018</time>
         </section>
     
 
     
         <section class="metas-summary">
             <i class="icon fas fa-quote-left" title="summary"></i>
-            <span>字符串清理 <code>replace</code> or <code>strip</code> 速度验证以及思考。</span>
+            <span>立即执行 <code>map</code> 函数</span>
         </section>
     
 
@@ -153,48 +153,39 @@ There are more things in heaven and earth, Horatio, than are dreamt.
     </section>
     <section>
         <nav class="text-table-of-contents"><ul>
-<li><a href="#验证测试">验证测试</a></li>
-<li><a href="#思考">思考</a></li>
+<li><a href="#前言">前言</a></li>
+<li><a href="#研究">研究</a><ul>
+<li><a href="#起初我是用-list.">起初，我是用 <code>list</code>.</a></li>
+<li><a href="#用-for-循环来替代-map.">用 <code>for</code> 循环来替代 <code>map</code>.</a></li>
+<li><a href="#最后有了-all-和-any.">最后，有了 <code>all</code> 和 <code>any</code>.</a></li>
+</ul></li>
+<li><a href="#几条关于-map-的事项">几条关于 <code>map</code> 的事项</a></li>
 </ul></nav>
-<h2 id="验证测试">验证测试</h2>
-<p>两三年前，在某个地方（或许是 cookbook ），看到过一条:</p>
-<blockquote>
-<p>在清理字符串的时候，尽量用 <code>replace</code> ，因为在效率上高出很多。</p>
-</blockquote>
-<p>这两天正好有机会，试了试，事实确实如此。</p>
-<p>直接看结果吧！</p>
-<p>原始字符串是这样的：</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode Python"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" data-line-number="1">test_string <span class="op">=</span> <span class="st">&quot;      ******************sss--------------------       </span><span class="ch">\n</span><span class="st">&quot;</span></a></code></pre></div>
-<p>然后，我的测试呢，也是简单的用了 <code>timeit</code> ，并没有更深入的去做。</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode Python"><code class="sourceCode python"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="op">&gt;&gt;&gt;</span> <span class="op">%</span>timeit test_string.replace(<span class="st">&quot;*&quot;</span>, <span class="st">&quot;&quot;</span>).replace(<span class="st">&quot;-&quot;</span>, <span class="st">&quot;&quot;</span>).replace(<span class="st">&quot; &quot;</span>, <span class="st">&quot;&quot;</span>).replace(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>, <span class="st">&quot;&quot;</span>)</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="fl">1.47</span> µs ± <span class="fl">4.14</span> ns per loop (mean ± std. dev. of <span class="dv">7</span> runs, <span class="dv">1000000</span> loops each)</a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="op">&gt;&gt;&gt;</span> <span class="op">%</span>timeit test_string.strip(<span class="st">&quot; *-&quot;</span>)</a>
-<a class="sourceLine" id="cb2-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="dv">458</span> ns ± <span class="dv">11</span> ns per loop (mean ± std. dev. of <span class="dv">7</span> runs, <span class="dv">1000000</span> loops each)</a></code></pre></div>
-<p>大概就是这样， <code>replace</code> 比 <code>strip</code> 的速度优势太大了。</p>
-<h2 id="思考">思考</h2>
-<p>正好嘛，最近又更加深入的了解了点文学编程。虽然用 <code>Python</code> 要达到文学编程，还有很长的一段路需要走，但是，并不代表，它不能去用那种思想去搞事。于是遇到了一个困扰我的问题：</p>
-<p><strong>在连续几个 <code>replace</code> 的情况下，如何有效进行漂亮的注释？</strong></p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode Python"><code class="sourceCode python"><a class="sourceLine" id="cb3-1" data-line-number="1">string.replace(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>, <span class="st">&quot;&quot;</span>).replace(<span class="st">&quot;&gt;&quot;</span>, <span class="st">&quot;&quot;</span>).replace(<span class="st">&quot;&lt;&quot;</span>, <span class="st">&quot;&quot;</span>).replace(<span class="st">&quot;#+&quot;</span>, <span class="st">&quot;&quot;</span>)</a></code></pre></div>
-<p>一直以来，或者说，知道 <code>replace</code> 速度更快之后，一直以来，我的这些字符串替换操作都是能用 <code>replace</code> 就不用其他的，不能用的时候，大概就是要用正则的时候了。不过就像大家所知道的那样，一个接一个的 <code>.replace</code> 是很丑陋，而且不方便注释，很不文学。虽然也有办法让他对齐 `.` 如下面所示，变得比以前漂亮多了，但是依然不能够很好的加上注释（`\`后面是不能加上注释的）。</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode Python"><code class="sourceCode python"><a class="sourceLine" id="cb4-1" data-line-number="1">string.replace(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>, <span class="st">&quot;&quot;</span>)<span class="op">\</span></a>
-<a class="sourceLine" id="cb4-2" data-line-number="2">      .replace(<span class="st">&quot;&lt;&quot;</span>, <span class="st">&quot;&quot;</span>) <span class="op">\</span></a>
-<a class="sourceLine" id="cb4-3" data-line-number="3">      .replace(<span class="st">&quot;&gt;&quot;</span>, <span class="st">&quot;&quot;</span>) <span class="op">\</span></a>
-<a class="sourceLine" id="cb4-4" data-line-number="4">      .replace(<span class="st">&quot;#+&quot;</span>, <span class="st">&quot;&quot;</span>)</a></code></pre></div>
-<p>直到我 <code>Haskell</code> 写的多了，有一天突然就醒悟了，其实我没必要一定写在 <code>replace</code> 的这个地方，我可以把它写成一个函数（虽然这让时间开销变大，似乎又本末倒置了）。</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode Python"><code class="sourceCode python"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">def</span> clean_string(string: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:</a>
-<a class="sourceLine" id="cb5-2" data-line-number="2">    <span class="co">&quot;&quot;&quot;Clean string.</span></a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">    Strip `\n` as it used in the end of a line.</span></a>
-<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">    ...</span></a>
-<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">    &quot;&quot;&quot;</span></a>
-<a class="sourceLine" id="cb5-7" data-line-number="7">    <span class="cf">return</span> string.replace(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>, <span class="st">&quot;&quot;</span>)<span class="op">\</span></a>
-<a class="sourceLine" id="cb5-8" data-line-number="8">                 .replace(<span class="st">&quot;&lt;&quot;</span>, <span class="st">&quot;&quot;</span>) <span class="op">\</span></a>
-<a class="sourceLine" id="cb5-9" data-line-number="9">                 .replace(<span class="st">&quot;&gt;&quot;</span>, <span class="st">&quot;&quot;</span>) <span class="op">\</span></a>
-<a class="sourceLine" id="cb5-10" data-line-number="10">                 .replace(<span class="st">&quot;#+&quot;</span>, <span class="st">&quot;&quot;</span>)</a></code></pre></div>
-<p>这样，我把解释写在函数里面，清理的时候， <code>clean_string(string)</code> 就好了。</p>
+<h2 id="前言">前言</h2>
+<p>自从 <code>Python 3</code> 把 <code>map</code> 函数变为惰性的之后，那些没有返回值的函数，怎样立即执行，把函数式爱好者，不喜欢写 <code>for</code> 的我难住了，因为直接写 <code>map(f, lst)</code> 返回的是一个 <code>&lt;map at 0x17c249c50&gt;</code>, 一个 <code>generator</code>. 函数 <code>f</code> 并没有被执行呢。</p>
+<h2 id="研究">研究</h2>
+<h3 id="起初我是用-list.">起初，我是用 <code>list</code>.</h3>
+<p>我为了执行这些，总是在外面套一层 <code>list</code> 函数，变为 <code>list(map(f, lst))</code> 。可想而知，这样是不好的，如果那个 <code>lst</code> 很大，里面的元素数量很多，最后生成一个 <code>list</code> 不但会拖慢速度，还会占很多内存（大概）。</p>
+<h3 id="用-for-循环来替代-map.">用 <code>for</code> 循环来替代 <code>map</code>.</h3>
+<p>我最早想到的，就是这个，就之前那个来说，很显然，可这样来替代 <code>map</code>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="cf">for</span> l <span class="kw">in</span> lst:</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">    f(l)</a></code></pre></div>
+<p>不过，一开始我就说了，不想用 <code>for</code> （好像是有点任性呢）。</p>
+<p>于是，这个方法不行🙅。</p>
+<h3 id="最后有了-all-和-any.">最后，有了 <code>all</code> 和 <code>any</code>.</h3>
+<p>想要判断一个 <code>list</code> 中是否有 <code>True</code> ，就可以在标准库中发现了这两个函数 <code>all</code> 和 <code>any</code>. 这两个函数一个是当 <code>list</code> 中全为 <code>True</code> 的时候，返回 <code>True</code> ，否则返回 <code>False</code> ，一个是当 <code>list</code> 中含有 <code>True</code> 的时候，返回 <code>True</code> ，否则 <code>False</code>.</p>
+<p>当我们的 <code>f</code> 没有返回值的时候，在 <code>Python 3</code> 中就是 <code>False</code> ，因此，此时只需要简单的 <code>any(map(f, lst))</code> 就可以立即执行这个没有返回值的 <code>map</code> 了。不过要注意的是， <strong>当函数 <code>f</code> 具有返回值，而且 <code>bool</code> 值为 <code>True</code> 的时候， <code>any</code> 就失效了，或者说，运行的不完整。</strong> 毕竟，有了返回值，为什么还要这样执行它呢？快把那些命令提出来，单独作为一个函数啊喂！</p>
+<h2 id="几条关于-map-的事项">几条关于 <code>map</code> 的事项</h2>
+<p>（非新手请直接略过，不过，大佬们大概也不会来看我的..）我在想之后或许会有一篇 <code>Python</code> 函数式感想出现呢w</p>
+<ul>
+<li><code>map</code> 速度是比 <code>for</code> 循环要快的，当然，列表推导式除外（只适用于目前的 <code>Python 3</code> ）</li>
+<li>列表推导式其实可以很简单的用 <code>map</code> + <code>filter</code> 的组合替代，虽然效率不怎么高:</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb2-1" data-line-number="1">(i <span class="op">+</span> i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>) <span class="cf">if</span> i <span class="op">&gt;</span> <span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="bu">map</span>(<span class="kw">lambda</span> x: x <span class="op">+</span> i, <span class="bu">filter</span>(<span class="kw">lambda</span> x: x <span class="op">&gt;</span> <span class="dv">5</span>, <span class="bu">range</span>(<span class="dv">10</span>)))</a></code></pre></div>
+<ul>
+<li>当然，用上 <code>itertools</code> 库中的函数，比如 <code>takewhile</code> ，会更棒哟!</li>
+</ul>
     </section>
 </article>
 <hr />

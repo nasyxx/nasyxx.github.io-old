@@ -151,6 +151,23 @@ function remove_duplicate_h1() {
     }
 }
 
+function remove_optional_tnc(){
+  try{
+    document.querySelectorAll(".metas-categories").forEach(function(ele){
+      if (ele.querySelector("ul").textContent.length == 0){
+        ele.parentNode.removeChild(ele)
+      }
+    })
+  }catch{}
+  try{
+    document.querySelectorAll(".metas-tags").forEach(function(ele){
+      if (ele.querySelector("ul").textContent.length == 0){
+        ele.parentNode.removeChild(ele)
+      }
+    })
+  }catch{}
+}
+
 // function formattime() {
 //     document.querySelectorAll("time[datetime]").forEach(function (e) {
 //         e.textContent = moment(e.attributes.datetime.textContent).format("ll")
@@ -224,9 +241,10 @@ window.addEventListener('scroll', function () {
 // }, false)
 
 domready(
-    add_icon(),
-    // formattime(),
-    hljs.initHighlighting(),
-    remove_last_tag_c(),
-    remove_duplicate_h1()
+  add_icon(),
+  // formattime(),
+  hljs.initHighlighting(),
+  remove_last_tag_c(),
+  remove_duplicate_h1(),
+  remove_optional_tnc(),
 )
