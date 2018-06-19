@@ -4,7 +4,7 @@
 #+TAGS: 花, flower, hana, 随笔, essay, python
 #+CATEGORIES: Flower, Eassy
 #+SUMMARY: 立即执行 <code>map</code> 函数
-#+COMMENT: Python 感想
+#+COMMENT: Python 感想 002
 
 
 * 前言
