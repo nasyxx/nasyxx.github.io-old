@@ -72,3 +72,22 @@ def clean_string(string: str) -> str:
 #+END_SRC
 
 这样，我把解释写在函数里面，清理的时候， ~clean_string(string)~ 就好了。
+
+* 更新
+
+** Jul 3, 2018
+
+是的，我明白， ~\~ 并不是一个很完美的解决方案，比如上面的代码，完全可以用括号括起来，然后 ~return~ ：
+
+#+BEGIN_SRC Python
+return (
+    string.replace("#", "")
+    .replace("+", "")
+    .replace("12", "")
+    .replace("#", "")
+    .replace("+", "")
+    .replace("12", "")
+)
+#+END_SRC
+
+不过，我很讨厌括号，特别是需要我手动括起来的括号，也就是，不能像写 Lisp 的时候一样，只需要写单边的括号，甚至，只需要缩进就能自动补上括号。因此，这个方案在有新的 Python code formatter 实现以前，我是不打算使用的。当然现在还真有一个 formatter [[https://github.com/ambv/black][black]] 实现了它。尽管如此，这也是后话了，这篇文章完成之时(2018-06-15)， black 尚不能轻松的在 Emacs 或者 Atom 中使用，要使用它，还需要命令行，并不能在保存文件的同时，立即 format . 而 Python Language Server 支持 black (pyls-black) 则是在 2018-06-17.
