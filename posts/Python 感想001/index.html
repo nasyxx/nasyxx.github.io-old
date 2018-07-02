@@ -155,6 +155,9 @@ There are more things in heaven and earth, Horatio, than are dreamt.
         <nav class="text-table-of-contents"><ul>
 <li><a href="#验证测试">验证测试</a></li>
 <li><a href="#思考">思考</a></li>
+<li><a href="#更新">更新</a><ul>
+<li><a href="#jul-3-2018">Jul 3, 2018</a></li>
+</ul></li>
 </ul></nav>
 <h2 id="验证测试">验证测试</h2>
 <p>两三年前，在某个地方（或许是 cookbook ），看到过一条:</p>
@@ -195,6 +198,18 @@ There are more things in heaven and earth, Horatio, than are dreamt.
 <a class="sourceLine" id="cb5-9" data-line-number="9">                 .replace(<span class="st">&quot;&gt;&quot;</span>, <span class="st">&quot;&quot;</span>) <span class="op">\</span></a>
 <a class="sourceLine" id="cb5-10" data-line-number="10">                 .replace(<span class="st">&quot;#+&quot;</span>, <span class="st">&quot;&quot;</span>)</a></code></pre></div>
 <p>这样，我把解释写在函数里面，清理的时候， <code>clean_string(string)</code> 就好了。</p>
+<h2 id="更新">更新</h2>
+<h3 id="jul-3-2018">Jul 3, 2018</h3>
+<p>是的，我明白， <code>\</code> 并不是一个很完美的解决方案，比如上面的代码，完全可以用括号括起来，然后 <code>return</code> ：</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode Python"><code class="sourceCode python"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="cf">return</span> (</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">    string.replace(<span class="st">&quot;#&quot;</span>, <span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb6-3" data-line-number="3">    .replace(<span class="st">&quot;+&quot;</span>, <span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb6-4" data-line-number="4">    .replace(<span class="st">&quot;12&quot;</span>, <span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb6-5" data-line-number="5">    .replace(<span class="st">&quot;#&quot;</span>, <span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb6-6" data-line-number="6">    .replace(<span class="st">&quot;+&quot;</span>, <span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb6-7" data-line-number="7">    .replace(<span class="st">&quot;12&quot;</span>, <span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb6-8" data-line-number="8">)</a></code></pre></div>
+<p>不过，我很讨厌括号，特别是需要我手动括起来的括号，也就是，不能像写 Lisp 的时候一样，只需要写单边的括号，甚至，只需要缩进就能自动补上括号。因此，这个方案在有新的 Python code formatter 实现以前，我是不打算使用的。当然现在还真有一个 formatter <a href="https://github.com/ambv/black">black</a> 实现了它。尽管如此，这也是后话了，这篇文章完成之时(2018-06-15)， black 尚不能轻松的在 Emacs 或者 Atom 中使用，要使用它，还需要命令行，并不能在保存文件的同时，立即 format . 而 Python Language Server 支持 black (pyls-black) 则是在 2018-06-17.</p>
     </section>
 </article>
 <hr />
