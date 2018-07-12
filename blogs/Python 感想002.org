@@ -1,4 +1,4 @@
-#+TITLE: Python 感想 -- Jul 19, 2018
+#+TITLE: Python 感想 -- Jun 19, 2018
 #+DATE: <2018-06-19 Sat>
 #+AUTHOR: Nasy
 #+TAGS: 花, flower, hana, 随笔, essay, python
