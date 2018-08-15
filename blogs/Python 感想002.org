@@ -1,9 +1,9 @@
-#+TITLE: Python 感想 -- Jun 19, 2018
+#+TITLE: 立即执行 <code>map</code> 函数
 #+DATE: <2018-06-19 Sat>
 #+AUTHOR: Nasy
 #+TAGS: 花, flower, hana, 随笔, essay, python
 #+CATEGORIES: Flower, Eassy
-#+SUMMARY: 立即执行 <code>map</code> 函数
+#+SUMMARY: 我永远喜欢 map
 #+COMMENT: Python 感想 002
 
 

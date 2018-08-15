@@ -1,4 +1,4 @@
-#+TITLE: Python 感想 -- Jun 15, 2018
+#+TITLE: Python 字符串清理的思考
 #+DATE: <2018-06-15 Fri>
 #+AUTHOR: Nasy
 #+TAGS: 花, flower, hana, 随笔, essay, python
