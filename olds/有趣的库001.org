@@ -1,10 +1,10 @@
-#+TITLE: 有趣的库 1 -- gron
+#+TITLE: JSON 与 gron
 #+DATE: <2018-05-12 Sat>
 #+AUTHOR: Nasy
 #+TAGS: 草, grass, repositories, open-source
 #+CATEGORIES: Grass
-#+SUMMARY: 在 GitHub 上看到的有趣的库: gron
-#+COMMENT: 有趣的库
+#+SUMMARY: 有趣的库 001 -- gron
+#+COMMENT: 有趣的库 001
 
 * gron
 
