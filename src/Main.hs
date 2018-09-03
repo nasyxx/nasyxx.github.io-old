@@ -62,14 +62,14 @@ import           Text.Blaze.Html                ( toHtml
                                                 , toValue
                                                 , (!)
                                                 )
-import qualified Text.Blaze.Html5    as H
-import qualified Text.Blaze.Html5.Attributes
-                                     as A
+import qualified Text.Blaze.Html5              as H
+import qualified Text.Blaze.Html5.Attributes   as A
                                                 ( href )
 import           Text.Pandoc                    ( Pandoc
                                                 , Block(..)
                                                 , WriterOptions(..)
                                                 )
+import           Text.Pandoc.Options
 import           Text.Pandoc.Walk               ( walk )
 
 
@@ -138,6 +138,7 @@ main = hakyllWith config $ do
                 ctx =
                     constField "showing" showing
                         <> constField "title" title
+                        <> constField "', '"  "', '"
                         <> listField
                                "posts"
                                (  postCtxWithTags tags
@@ -163,6 +164,7 @@ main = hakyllWith config $ do
                 ctx =
                     constField "showing" showing
                         <> constField "title" title
+                        <> constField "', '"  "', '"
                         <> listField
                                "posts"
                                (  postCtxWithTags tags
@@ -224,7 +226,10 @@ main = hakyllWith config $ do
         route idRoute
         compile $ do
             let ctx =
-                    cloudCtx tags <> constField "title" "Tags" <> defaultContext
+                    cloudCtx tags
+                        <> constField "title" "Tags"
+                        <> constField "', '"  "', '"
+                        <> defaultContext
             makeItem ""
                 >>= loadAndApplyTemplate t_cloud   ctx
                 >>= loadAndApplyTemplate t_default ctx
@@ -234,10 +239,10 @@ main = hakyllWith config $ do
     create ["categories/index.html"] $ do
         route idRoute
         compile $ do
-            let
-                ctx =
+            let ctx =
                     cloudCtx categories
                         <> constField "title" "Categories"
+                        <> constField "', '"  "', '"
                         <> defaultContext
             makeItem ""
                 >>= loadAndApplyTemplate t_cloud   ctx
@@ -261,6 +266,7 @@ main = hakyllWith config $ do
                         <> constField "title"   "Nasy Land"
                         <> constField "showing" "Writings"
                         <> constField "index"   "true"
+                        <> constField "', '"    "', '"
                         <> defaultContext
 
             makeItem ""
@@ -318,11 +324,17 @@ shiftHeaders i = walk go
 
 myPandocCompiler :: Compiler (Item String)
 myPandocCompiler =
-    pandocCompilerWithTransform defaultHakyllReaderOptions withToc
+    pandocCompilerWithTransform defaultHakyllReaderOptions withTocMath
         $ shiftHeaders 1
   where
-    withToc = defaultHakyllWriterOptions
-        { writerTableOfContents = True
+    mathExtensions =
+        [Ext_tex_math_dollars, Ext_tex_math_double_backslash, Ext_latex_macros]
+    defaultWExtensions = writerExtensions defaultHakyllWriterOptions
+    customWExtensions  = extensionsFromList mathExtensions <> defaultWExtensions
+    withTocMath        = defaultHakyllWriterOptions
+        { writerExtensions      = customWExtensions
+        , writerHTMLMathMethod  = MathJax ""
+        , writerTableOfContents = True
         , writerTemplate        =
             Just "<nav class='text-table-of-contents'>$toc$</nav>\n$body$"
         }

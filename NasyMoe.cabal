@@ -11,6 +11,7 @@ cabal-version:      >= 1.10
 executable site
   main-is:          Main.hs
   build-depends:    base
+                  , containers
                   , hakyll
                   , filepath
                   , process
