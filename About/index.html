@@ -164,14 +164,14 @@ There are more things in heaven and earth, Horatio, than are dreamt.
 <p>Nasy 就是 Nasy 啦！虽然现在这个 blog 只有一人在维护，但是，我目前的人生中，还有另外两个 Nasy，都是生命中不可缺少的存在呢！</p>
 <p>至于我嘛，见 &gt;&gt; <a href="https://nasy.me" class="uri">https://nasy.me</a><a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>.</p>
 <h2 id="关于此博客">关于此博客</h2>
-<p>这个博客是我的一个尝试，基本上是从 <span class="math inline">0</span> 开始<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>，从基础的 markup 的文档渲染生成可以使用的 <code>HTML</code> ，到前端展现给我自己以及大家<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>，全都是自己慢慢的搞定的。</p>
+<p>这个博客是我的一个尝试，基本上是从 <span class="math inline">\(0\)</span> 开始<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>，从基础的 markup 的文档渲染生成可以使用的 <code>HTML</code> ，到前端展现给我自己以及大家<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>，全都是自己慢慢的搞定的。</p>
 <h3 id="思想思路与过程">思想，思路与过程</h3>
 <h4 id="server">Server</h4>
 <p>这次是一个尝试嘛，服务端的渲染部分是 Python<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a> 写的，而处理那些 <em>requests</em> 以及 <em>response</em> 的部分，则是用 Haskell<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a> 写的<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>。也是一种写代码风格的尝试，这一次，我尽我所能用了函数式，不使用面向对象来搞定，主要是 Haskell 给了我各种各样的改变，当然 Elm<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a> 也是同样的，影响风格的东西…</p>
 <h4 id="org-mode">Org mode<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a></h4>
 <p>首先是，我很明确，我将要使用 Org mode 来进行 blog 的写作。原因很简单，对于我来说， <code>markdown</code> 太简单了，有些时候，我想一边计算，一边运行某些代码，一边把结果输出出来，由于个人的专业或者是一些兴趣爱好，不是一个很罕见的需求。但是，这是基本的 <code>markdown</code> 办不到的，而 Org mode 是可行的。不过最主要的是，我用 <code>emacs</code> 啊！都用 <code>emacs</code> 了，怎么能不接着使用 Org mode 呢？</p>
 <p>与 <code>markdown</code> 的比起来，Org mode 也有一个比较麻烦的东西，这东西不像 <code>markdown</code> 一样，遍地都是渲染器，什么语言都有将它转为 <code>HTML</code> 的库。 Org mode 需要使用 <code>emacs</code> 来生成 <code>HTML</code> 或者其他格式的东西，虽然 GitHub<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a> 上也能预览 <code>Org</code> 文件，但是很残念，稍微多一点的东西都无法正确显示出来。原先的 blog ，我使用的是 <code>hexo</code> <a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a>，虽然有几个插件它支持 Org mode，然而遗憾的是，一些特有的用法，都无法用插件体现出来。</p>
-<p>这次从 <span class="math inline">0</span> 开始，解决 <code>Org</code> 文件转为 <code>HTML</code> 是一个很艰难的差事…我去研究了一下，那几个 <code>hexo</code> 的 Org mode 源码，发现大都是自己写了一个 <code>ox-html</code> 的东西，把 <code>Org</code> 文件转为 <code>HTML</code> 。GitHub 上也有几个 <code>org to html</code> 的库。不过嘛，后来我突然明白起来，这是我自己使用嘛，何必那么麻烦，直接简单的一条命令 <code>org-html-export-to-html</code> 不就可以了嘛…于是就有了下面这一段 Python 的 subprocess.</p>
+<p>这次从 <span class="math inline">\(0\)</span> 开始，解决 <code>Org</code> 文件转为 <code>HTML</code> 是一个很艰难的差事…我去研究了一下，那几个 <code>hexo</code> 的 Org mode 源码，发现大都是自己写了一个 <code>ox-html</code> 的东西，把 <code>Org</code> 文件转为 <code>HTML</code> 。GitHub 上也有几个 <code>org to html</code> 的库。不过嘛，后来我突然明白起来，这是我自己使用嘛，何必那么麻烦，直接简单的一条命令 <code>org-html-export-to-html</code> 不就可以了嘛…于是就有了下面这一段 Python 的 subprocess.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" data-line-number="1">subprocess.Popen(</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2">    <span class="st">&quot;emacsclient --socket-name=org_to_html &quot;</span></a>
 <a class="sourceLine" id="cb1-3" data-line-number="3">    <span class="ss">f&quot;-e '(progn (find-file </span><span class="ch">\&quot;</span><span class="sc">{</span>path<span class="sc">}</span><span class="ch">\&quot;</span><span class="ss">) &quot;</span></a>
@@ -328,20 +328,31 @@ There are more things in heaven and earth, Horatio, than are dreamt.
         <script src="../scripts/main.js" charset="utf-8"></script>
 
         <!-- MathJax -->
-        <script type="text/x-mathjax-config">
-            MathJax.Hub.Config({
-            displayAlign: "center",
-            displayIndent: "0em",
-            "HTML-CSS": { scale: 100, linebreaks: { automatic: "false" }, webFont: "TeX" },
-            SVG: { scale: 100, linebreaks: { automatic: "false" }, font: "TeX" },
-            NativeMML: { scale: 100 },
-            TeX: {
-                equationNumbers: {
-                    autoNumber: "AMS"
-                },
-                MultLineWidth: "85%",
-                TagSide: "right",
-                TagIndent: ".8em"
-            },
-            TEX2JAX: { inlineMath: [
-                    ['
+        <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+        <script type="text/javascript">
+            window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+            ga('create', 'UA-102577027-1', 'auto');
+            ga('send', 'pageview');
+        </script>
+        <script async src="https://www.google-analytics.com/analytics.js"></script>
+        <script>
+            if (window.performance) {
+                // Gets the number of milliseconds since page load
+                // (and rounds the result since the value must be an integer).
+                var timeSincePageLoad = Math.round(performance.now());
+
+                // Sends the timing hit to Google Analytics.
+                ga('send', 'timing', 'JS Dependencies', 'load', timeSincePageLoad);
+            }
+            function handleOutboundLinkClicks(event) {
+                ga('send', 'event', {
+                eventCategory: 'Outbound Link',
+                eventAction: 'click',
+                eventLabel: event.target.href,
+                transport: 'beacon'
+                });
+            }
+        </script>
+    </body>
+</html>

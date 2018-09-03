@@ -508,20 +508,31 @@ There are more things in heaven and earth, Horatio, than are dreamt.
         <script src="./scripts/main.js" charset="utf-8"></script>
 
         <!-- MathJax -->
-        <script type="text/x-mathjax-config">
-            MathJax.Hub.Config({
-            displayAlign: "center",
-            displayIndent: "0em",
-            "HTML-CSS": { scale: 100, linebreaks: { automatic: "false" }, webFont: "TeX" },
-            SVG: { scale: 100, linebreaks: { automatic: "false" }, font: "TeX" },
-            NativeMML: { scale: 100 },
-            TeX: {
-                equationNumbers: {
-                    autoNumber: "AMS"
-                },
-                MultLineWidth: "85%",
-                TagSide: "right",
-                TagIndent: ".8em"
-            },
-            TEX2JAX: { inlineMath: [
-                    ['
+        <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+        <script type="text/javascript">
+            window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+            ga('create', 'UA-102577027-1', 'auto');
+            ga('send', 'pageview');
+        </script>
+        <script async src="https://www.google-analytics.com/analytics.js"></script>
+        <script>
+            if (window.performance) {
+                // Gets the number of milliseconds since page load
+                // (and rounds the result since the value must be an integer).
+                var timeSincePageLoad = Math.round(performance.now());
+
+                // Sends the timing hit to Google Analytics.
+                ga('send', 'timing', 'JS Dependencies', 'load', timeSincePageLoad);
+            }
+            function handleOutboundLinkClicks(event) {
+                ga('send', 'event', {
+                eventCategory: 'Outbound Link',
+                eventAction: 'click',
+                eventLabel: event.target.href,
+                transport: 'beacon'
+                });
+            }
+        </script>
+    </body>
+</html>
