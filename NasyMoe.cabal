@@ -3,7 +3,7 @@ version:            0.1.0.0
 Synopsis:           Personal website of Nasy
 Description:        Personal website of Nasy
 Author:             Nasy
-Maintainer:         echo bmFzeXh4QGdtYWlsLmNvbQo= | base64 -D
+Maintainer:         nasyxx+nasymoe@gmail.com
 build-type:         Simple
 Category:           Web
 cabal-version:      >= 1.10
@@ -16,8 +16,8 @@ executable site
                   , filepath
                   , process
                   , blaze-html
-                  , pandoc == 2.1.2
-                  , pandoc-types == 1.17.3.1
+                  , pandoc
+                  , pandoc-types
   ghc-options:      -Wall -threaded
   Hs-source-dirs:   src
   default-language: Haskell2010
