@@ -179,16 +179,16 @@ There are more things in heaven and earth, Horatio, than are dreamt.
 crawl_it = &quot;crawler:main&quot;
 </code></pre>
 <p>然后简单的 <code>poetry run crawl_it</code> 来运行，不需要费心在 <code>makefile</code> 里面写上:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode makefile"><code class="sourceCode makefile"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="dv">crawl-it:</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2">        poetry run python crawler.py</a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="ot">.PHONY:</span><span class="dt"> crawl-it</span></a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode makefile"><code class="sourceCode makefile"><a class="sourceLine" id="cb2-1" title="1"><span class="dv">crawl-it:</span></a>
+<a class="sourceLine" id="cb2-2" title="2">        poetry run python crawler.py</a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="ot">.PHONY:</span><span class="dt"> crawl-it</span></a></code></pre></div>
 <p>还有一点也很重要，有了这东西，可以保证工作文件夹干净，不会出现虚拟环境的文件夹。</p>
 <hr />
 <p>我自己使用 Python ，最主要就是用来写爬虫。 用上 <code>Poetry</code> 之后，个人最经常的操作就是:</p>
-<div class="sourceCode" id="cb3" data-org-language="sh"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="fu">mkdir</span> xxxx         # 创建文件夹 xxxx</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="bu">cd</span> xxxx            # 进入</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="ex">poetry</span> init        # 项目初始化(会有一些选项选择)</a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="ex">emacsclient</span> -c .   # 打开最喜欢的编辑器</a></code></pre></div>
+<div class="sourceCode" id="cb3" data-org-language="sh"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="fu">mkdir</span> xxxx         # 创建文件夹 xxxx</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="bu">cd</span> xxxx            # 进入</a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="ex">poetry</span> init        # 项目初始化(会有一些选项选择)</a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="ex">emacsclient</span> -c .   # 打开最喜欢的编辑器</a></code></pre></div>
     </section>
 </article>
 <hr />

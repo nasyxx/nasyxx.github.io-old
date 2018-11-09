@@ -172,24 +172,24 @@ There are more things in heaven and earth, Horatio, than are dreamt.
 <p>首先是，我很明确，我将要使用 Org mode 来进行 blog 的写作。原因很简单，对于我来说， <code>markdown</code> 太简单了，有些时候，我想一边计算，一边运行某些代码，一边把结果输出出来，由于个人的专业或者是一些兴趣爱好，不是一个很罕见的需求。但是，这是基本的 <code>markdown</code> 办不到的，而 Org mode 是可行的。不过最主要的是，我用 <code>emacs</code> 啊！都用 <code>emacs</code> 了，怎么能不接着使用 Org mode 呢？</p>
 <p>与 <code>markdown</code> 的比起来，Org mode 也有一个比较麻烦的东西，这东西不像 <code>markdown</code> 一样，遍地都是渲染器，什么语言都有将它转为 <code>HTML</code> 的库。 Org mode 需要使用 <code>emacs</code> 来生成 <code>HTML</code> 或者其他格式的东西，虽然 GitHub<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a> 上也能预览 <code>Org</code> 文件，但是很残念，稍微多一点的东西都无法正确显示出来。原先的 blog ，我使用的是 <code>hexo</code> <a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a>，虽然有几个插件它支持 Org mode，然而遗憾的是，一些特有的用法，都无法用插件体现出来。</p>
 <p>这次从 <span class="math inline">\(0\)</span> 开始，解决 <code>Org</code> 文件转为 <code>HTML</code> 是一个很艰难的差事…我去研究了一下，那几个 <code>hexo</code> 的 Org mode 源码，发现大都是自己写了一个 <code>ox-html</code> 的东西，把 <code>Org</code> 文件转为 <code>HTML</code> 。GitHub 上也有几个 <code>org to html</code> 的库。不过嘛，后来我突然明白起来，这是我自己使用嘛，何必那么麻烦，直接简单的一条命令 <code>org-html-export-to-html</code> 不就可以了嘛…于是就有了下面这一段 Python 的 subprocess.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" data-line-number="1">subprocess.Popen(</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">    <span class="st">&quot;emacsclient --socket-name=org_to_html &quot;</span></a>
-<a class="sourceLine" id="cb1-3" data-line-number="3">    <span class="ss">f&quot;-e '(progn (find-file </span><span class="ch">\&quot;</span><span class="sc">{</span>path<span class="sc">}</span><span class="ch">\&quot;</span><span class="ss">) &quot;</span></a>
-<a class="sourceLine" id="cb1-4" data-line-number="4">    <span class="st">&quot;(setq org-export-preserve-breaks nil)&quot;</span></a>
-<a class="sourceLine" id="cb1-5" data-line-number="5">    <span class="st">&quot;(setq org-export-with-emphasize t)&quot;</span></a>
-<a class="sourceLine" id="cb1-6" data-line-number="6">    <span class="st">&quot;(setq org-export-with-special-strings t)&quot;</span></a>
-<a class="sourceLine" id="cb1-7" data-line-number="7">    <span class="st">&quot;(setq org-export-with-sub-superscripts t)&quot;</span></a>
-<a class="sourceLine" id="cb1-8" data-line-number="8">    <span class="st">&quot;(setq org-export-headline-levels 4)&quot;</span></a>
-<a class="sourceLine" id="cb1-9" data-line-number="9">    <span class="st">&quot;(setq org-export-with-latex t)&quot;</span></a>
-<a class="sourceLine" id="cb1-10" data-line-number="10">    <span class="st">&quot;(setq org-export-with-fixed-width t)&quot;</span></a>
-<a class="sourceLine" id="cb1-11" data-line-number="11">    <span class="st">&quot;(setq org-export-with-section-numbers nil) &quot;</span></a>
-<a class="sourceLine" id="cb1-12" data-line-number="12">    <span class="st">&quot;(setq org-export-with-toc 3)&quot;</span></a>
-<a class="sourceLine" id="cb1-13" data-line-number="13">    <span class="st">&quot;(setq org-export-with-tables t)&quot;</span></a>
-<a class="sourceLine" id="cb1-14" data-line-number="14">    <span class="st">&quot;(org-html-export-to-html))' &quot;</span>,</a>
-<a class="sourceLine" id="cb1-15" data-line-number="15">    shell <span class="op">=</span> <span class="va">True</span>,</a>
-<a class="sourceLine" id="cb1-16" data-line-number="16">    stdout <span class="op">=</span> subprocess.PIPE,</a>
-<a class="sourceLine" id="cb1-17" data-line-number="17">    stderr <span class="op">=</span> subprocess.PIPE,</a>
-<a class="sourceLine" id="cb1-18" data-line-number="18">)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" title="1">subprocess.Popen(</a>
+<a class="sourceLine" id="cb1-2" title="2">    <span class="st">&quot;emacsclient --socket-name=org_to_html &quot;</span></a>
+<a class="sourceLine" id="cb1-3" title="3">    <span class="ss">f&quot;-e '(progn (find-file </span><span class="ch">\&quot;</span><span class="sc">{</span>path<span class="sc">}</span><span class="ch">\&quot;</span><span class="ss">) &quot;</span></a>
+<a class="sourceLine" id="cb1-4" title="4">    <span class="st">&quot;(setq org-export-preserve-breaks nil)&quot;</span></a>
+<a class="sourceLine" id="cb1-5" title="5">    <span class="st">&quot;(setq org-export-with-emphasize t)&quot;</span></a>
+<a class="sourceLine" id="cb1-6" title="6">    <span class="st">&quot;(setq org-export-with-special-strings t)&quot;</span></a>
+<a class="sourceLine" id="cb1-7" title="7">    <span class="st">&quot;(setq org-export-with-sub-superscripts t)&quot;</span></a>
+<a class="sourceLine" id="cb1-8" title="8">    <span class="st">&quot;(setq org-export-headline-levels 4)&quot;</span></a>
+<a class="sourceLine" id="cb1-9" title="9">    <span class="st">&quot;(setq org-export-with-latex t)&quot;</span></a>
+<a class="sourceLine" id="cb1-10" title="10">    <span class="st">&quot;(setq org-export-with-fixed-width t)&quot;</span></a>
+<a class="sourceLine" id="cb1-11" title="11">    <span class="st">&quot;(setq org-export-with-section-numbers nil) &quot;</span></a>
+<a class="sourceLine" id="cb1-12" title="12">    <span class="st">&quot;(setq org-export-with-toc 3)&quot;</span></a>
+<a class="sourceLine" id="cb1-13" title="13">    <span class="st">&quot;(setq org-export-with-tables t)&quot;</span></a>
+<a class="sourceLine" id="cb1-14" title="14">    <span class="st">&quot;(org-html-export-to-html))' &quot;</span>,</a>
+<a class="sourceLine" id="cb1-15" title="15">    shell <span class="op">=</span> <span class="va">True</span>,</a>
+<a class="sourceLine" id="cb1-16" title="16">    stdout <span class="op">=</span> subprocess.PIPE,</a>
+<a class="sourceLine" id="cb1-17" title="17">    stderr <span class="op">=</span> subprocess.PIPE,</a>
+<a class="sourceLine" id="cb1-18" title="18">)</a></code></pre></div>
 <p>剩下的一些就很简单了，就是从原始的 Org 文件里，读取什么 Tags 啊，Categories 啊，Title 之类的。大概就是，一行一行往下读，然后分析一下这一行是否有我要的内容。</p>
 <h4 id="elm">Elm</h4>
 <p>其实，最开始，我并不是使用 Elm 来作为我网站的前端的，我本来，只想使用简单的静态网页。不过，某一天，突然见到了 Elm 这样一门语言，于是，这一次，也就顺便使用这门语言来写一写前端，也是一种练习嘛。最后，Elm 的体验还行。不过由于最开始，我对其理解不够透彻，有些地方，一开始就做的不是很好，导致后来明白的时候，想改也很麻烦了…也就那样摆着了。</p>
