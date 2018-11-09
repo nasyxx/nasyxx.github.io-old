@@ -403,6 +403,6 @@ replaceSpace = map repl
     repl ' ' = '-'
     repl c   = c
 
-
+-- | I am not really happy with this, though gitalk makes me have to do like this.
 urlEString :: String -> String
 urlEString = urlEncode . replaceSpace
