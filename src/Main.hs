@@ -52,6 +52,7 @@ import           Data.Maybe                     ( fromMaybe )
 import           Data.Monoid                    ( (<>) )
 import           Hakyll
 import           Hakyll.Web.Tags                ( tagsFieldWith )
+import           Network.HTTP.Base              ( urlEncode )
 import           System.FilePath.Posix          ( takeBaseName
                                                 , takeDirectory
                                                 , (</>)
@@ -255,8 +256,8 @@ main = hakyllWith config $ do
         compile $ do
             posts <- recentFirst =<< loadAll "posts/*.org"
             let
-                indexCtx
-                    = listField
+                indexCtx =
+                    listField
                             "posts"
                             (  postCtxWithTags tags
                             <> postCtxWithCats categories
@@ -291,7 +292,7 @@ cleanRoute :: Routes
 cleanRoute = customRoute createIndexRoute
   where
     createIndexRoute ident =
-        takeDirectory p </> takeBaseName p </> "index.html"
+        takeDirectory p </> (urlEString . takeBaseName) p </> "index.html"
         where p = toFilePath ident
 
 
@@ -362,7 +363,7 @@ cloudCtx = tagCloudField "cloud" 80 125
 
 
 -------------------------------------------------------------------------------
--- | Custome Get Metadata
+-- | Custom Get Metadata
 
 -- | Multi-categories. It should support both Chinese and English categories
 -- Magic change the `buildCategories` from the source of Hakyll
@@ -392,3 +393,16 @@ buildCategories' :: MonadMetadata m
                  -> (String -> Identifier)
                  -> m Tags
 buildCategories' = buildTagsWith getCategory'
+
+-------------------------------------------------------------------------------
+-- | Custom Functions
+
+replaceSpace :: String -> String
+replaceSpace = map repl
+  where
+    repl ' ' = '-'
+    repl c   = c
+
+
+urlEString :: String -> String
+urlEString = urlEncode . replaceSpace
