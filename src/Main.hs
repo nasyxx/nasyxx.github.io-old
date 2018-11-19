@@ -203,7 +203,7 @@ main = hakyllWith config $ do
             >>= relativizeUrls
             >>= cleanIndexUrls
 
-    match "About.org" $ do
+    match "about.org" $ do
         route cleanRoute
         compile
             $   myPandocCompiler
