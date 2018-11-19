@@ -24,4 +24,4 @@ build-web: clean add-header
 .PHONY: build-web
 
 deploy: build-web
-	git checkout master && cp -a public/. ./ && git add --all && git commit -m "Publish." && git push && git checkout dev
+	git checkout master && rm -rf posts && cp -a public/. ./ && git add --all && git commit -m "Publish." && git push && git checkout dev
