@@ -7,7 +7,7 @@ watch: build-web
 
 clean: build
 	stack exec site clean
-	rm -rf About.org
+	rm -rf about.org
 	rm -rf posts
 .PHONY: clean
 
