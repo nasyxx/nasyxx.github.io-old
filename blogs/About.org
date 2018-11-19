@@ -6,6 +6,7 @@
 #+SUMMARY: About this blog and nasy, 关于此 blog 和 nasy.
 #+COMMENT: message board
 #+CTITLE: Message Board
+#+HREF: about
 
 * 关于 Nasy
 

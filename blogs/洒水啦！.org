@@ -4,6 +4,7 @@
 #+TAGS: 花, flower, hana, 随笔, essay
 #+CATEGORIES: Flower, Eassy
 #+SUMMARY: 当你的电脑被别人洒水后，你会怎么做呢？
+#+HREF: sprinkle-water
 
 本来这件事是发生在4月初的，没想到，直到今天，事情才终于告一段落。
 

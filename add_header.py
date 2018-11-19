@@ -37,22 +37,24 @@ Excited without bugs::
 There are more things in heaven and earth, Horatio, than are dreamt.
  --  From "Hamlet"
 """
+# Standard Library
 import re
-from itertools import takewhile
-from pathlib import Path
 from typing import Dict, List
+from pathlib import Path
+from itertools import takewhile
 
 
 def clean_line(line: str) -> str:
     """Clean line."""
     if "date" in line.lower():
-        return line.replace("\n", "")\
-                   .replace("<", "")\
-                   .replace(">", "")\
-                   .replace("#+", "")
+        return (
+            line.replace("\n", "")
+            .replace("<", "")
+            .replace(">", "")
+            .replace("#+", "")
+        )
 
-    return line.replace("\n", "")\
-               .replace("#+", "")
+    return line.replace("\n", "").replace("#+", "")
 
 
 def get_all_org_files() -> List[Path]:
@@ -67,21 +69,31 @@ def get_meta_from_org(path: Path) -> Dict[str, str]:
         for line in takewhile(lambda x: x != "\n", f):
             k, *vs = re.split(r":\s*", clean_line(line))
             kl, v = k.lower(), "".join(vs)
-            if kl in ("author", "title", "language", "summary", "comment",
-                      "ctitle"):
+            if kl in (
+                "author",
+                "title",
+                "language",
+                "summary",
+                "comment",
+                "ctitle",
+            ):
                 res[kl] = v
             elif kl in ("tags", "categories"):
                 res[kl] = ", ".join(sorted(re.split(r",\s*", v)))
             elif kl == "date" and v:
                 res[kl] = v[0:10]
+            elif kl == "href":
+                res[kl] = v + ".org"
         return res
 
 
 def write_out(path: Path) -> None:
     """Write out org file."""
     metadata = get_meta_from_org(path)
-    Path("posts").mkdir(exist_ok = True)
-    with (Path("posts") / path.name).open("w") as o, path.open() as f:
+    Path("posts").mkdir(exist_ok=True)
+    with (Path("posts") / metadata.get("href", path.name)).open(
+        "w"
+    ) as o, path.open() as f:
         o.write("------------------\n")
         for k, v in metadata.items():
             o.write(k + ": " + v + "\n")
@@ -91,7 +103,7 @@ def write_out(path: Path) -> None:
 
 def hack_about() -> None:
     """Hack about.html."""
-    Path("posts/About.org").replace("About.org")
+    Path("posts/about.org").replace("about.org")
 
 
 def main() -> None:
@@ -100,5 +112,5 @@ def main() -> None:
     hack_about()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

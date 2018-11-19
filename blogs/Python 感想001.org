@@ -5,6 +5,7 @@
 #+CATEGORIES: Flower, Eassy
 #+SUMMARY: 字符串清理 <code>replace</code> or <code>strip</code> 速度验证以及思考。
 #+COMMENT: Python 感想 001
+#+HREF: python-impression-001
 
 * 验证测试
 两三年前，在某个地方（或许是 cookbook ），看到过一条:

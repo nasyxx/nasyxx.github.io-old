@@ -4,6 +4,7 @@
 #+TAGS: 草, grass, tools, open-source
 #+CATEGORIES: Grass, Tools
 #+SUMMARY: 好用的 Python 依赖管理以及打包工具 Poetry.
+#+HREF: poetry-and-python
 
 * Poetry 是什么？
 

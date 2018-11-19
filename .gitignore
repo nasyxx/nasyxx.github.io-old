@@ -2,6 +2,7 @@ _cache
 
 .stack-work
 .ropeproject
+.mypy_cache
 
 posts/*.org
 

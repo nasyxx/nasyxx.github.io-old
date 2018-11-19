@@ -5,6 +5,7 @@
 #+CATEGORIES: Flower, Essay
 #+SUMMARY: 关键词 async 导致 Tensorflow 不能用。jedi 也有奇怪的问题。
 #+COMMENT: Python 感想 003
+#+HREF: python-impression-003
 
 我很喜欢尝鲜，无论是生活上的，还是电脑上正在使用的内容。当然了，伴随着新事物的新特性，必然会带来很多奇奇怪怪的 bug。
 

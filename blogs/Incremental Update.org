@@ -4,6 +4,7 @@
 #+TAGS: 鱼, fish, 算法, algorithm
 #+CATEGORIES: Fish, Algorithm
 #+SUMMARY: Compare the files within two folders.
+#+HREF: incremental-update
 
 * About this algorithm
 

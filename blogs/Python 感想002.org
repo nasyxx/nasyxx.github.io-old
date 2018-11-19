@@ -5,6 +5,7 @@
 #+CATEGORIES: Flower, Eassy
 #+SUMMARY: 我永远喜欢 map
 #+COMMENT: Python 感想 002
+#+HREF: python-impression-002
 
 
 * 前言
