@@ -19,6 +19,6 @@ executable site
                   , pandoc
                   , pandoc-types
                   , HTTP
-  ghc-options:      -Wall -threaded
+  ghc-options:      -Wall -Werror -threaded
   Hs-source-dirs:   src
   default-language: Haskell2010
