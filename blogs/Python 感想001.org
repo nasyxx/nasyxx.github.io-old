@@ -40,7 +40,11 @@
 大概就是这样， ~replace~ 比 ~strip~ 的速度优势太大了。
 #+html: </del>
 
+** New :: <2018-12-25 Tue>
+
 ~strip~ 比 ~replace~ 优势很大，三倍有余
+
+不过嘛， ~strip~ 始终是只能清理两侧的，字中间的，还是要靠 ~replace~ 或者正则。
 
 * 思考
 
@@ -99,4 +103,4 @@
 
 ** Dec 25, 2018
 
-啊，感谢 [[https://github.com/frostming][frostming]]！愚蠢的我竟然 n \mu 不分，导致写反。（重要的是思想，（碎碎念。
+啊，感谢 [[https://github.com/frostming][frostming]]！愚蠢的我竟然 n \mu 不分，导致写反。（重要的是思想，（碎碎念，诶，我也太年轻了。
