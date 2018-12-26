@@ -153,7 +153,9 @@ There are more things in heaven and earth, Horatio, than are dreamt.
     </section>
     <section>
         <nav class="text-table-of-contents"><ul>
-<li><a href="#验证测试">验证测试</a></li>
+<li><a href="#验证测试">验证测试</a><ul>
+<li><a href="#new-2018-12-25-tue">New :: &lt;2018-12-25 Tue&gt;</a></li>
+</ul></li>
 <li><a href="#思考">思考</a></li>
 <li><a href="#更新">更新</a><ul>
 <li><a href="#jul-3-2018">Jul 3, 2018</a></li>
@@ -180,7 +182,9 @@ There are more things in heaven and earth, Horatio, than are dreamt.
 <del>
 <p>大概就是这样， <code>replace</code> 比 <code>strip</code> 的速度优势太大了。</p>
 </del>
+<h3 id="new-2018-12-25-tue">New :: &lt;2018-12-25 Tue&gt;</h3>
 <p><code>strip</code> 比 <code>replace</code> 优势很大，三倍有余</p>
+<p>不过嘛， <code>strip</code> 始终是只能清理两侧的，字中间的，还是要靠 <code>replace</code> 或者正则。</p>
 <h2 id="思考">思考</h2>
 <p>正好嘛，最近又更加深入的了解了点文学编程。虽然用 <code>Python</code> 要达到文学编程，还有很长的一段路需要走，但是，并不代表，它不能去用那种思想去搞事。于是遇到了一个困扰我的问题：</p>
 <p><strong>在连续几个 <code>replace</code> 的情况下，如何有效进行漂亮的注释？</strong></p>
@@ -215,7 +219,7 @@ There are more things in heaven and earth, Horatio, than are dreamt.
 <a class="sourceLine" id="cb6-8" title="8">)</a></code></pre></div>
 <p>不过，我很讨厌括号，特别是需要我手动括起来的括号，也就是，不能像写 Lisp 的时候一样，只需要写单边的括号，甚至，只需要缩进就能自动补上括号。因此，这个方案在有新的 Python code formatter 实现以前，我是不打算使用的。当然现在还真有一个 formatter <a href="https://github.com/ambv/black">black</a> 实现了它。尽管如此，这也是后话了，这篇文章完成之时(2018-06-15)，black 尚不能轻松的在 Emacs 或者 Atom 中使用，要使用它，还需要命令行，并不能在保存文件的同时，立即 format . 而 Python Language Server 支持 black (pyls-black) 则是在 2018-06-17.</p>
 <h3 id="dec-25-2018">Dec 25, 2018</h3>
-<p>啊，感谢 <a href="https://github.com/frostming">frostming</a>！愚蠢的我竟然 n <em>μ</em> 不分，导致写反。（重要的是思想，（碎碎念。</p>
+<p>啊，感谢 <a href="https://github.com/frostming">frostming</a>！愚蠢的我竟然 n <em>μ</em> 不分，导致写反。（重要的是思想，（碎碎念，诶，我也太年轻了。</p>
     </section>
 </article>
 <hr />
