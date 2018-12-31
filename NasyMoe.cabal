@@ -1,24 +1,32 @@
-name:               NasyMoe
-version:            0.1.0.0
-Synopsis:           Personal website of Nasy
-Description:        Personal website of Nasy
-Author:             Nasy
-Maintainer:         nasyxx+nasymoe@gmail.com
-build-type:         Simple
-Category:           Web
-cabal-version:      >= 1.10
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.31.1.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 8c261c5360d54f933da9d37812dc0d0a6508bc16cf7e8a38515808e95bd8d03b
+
+name:           NasyMoe
+version:        0.1.2.0
+synopsis:       Personal website of Nasy.
+description:    Personal website of Nasy.
+category:       Web
+author:         Nasy
+maintainer:     nasyxx+nasymoe@gmail.com
+build-type:     Simple
 
 executable site
-  main-is:          Main.hs
-  build-depends:    base
-                  , containers
-                  , hakyll
-                  , filepath
-                  , process
-                  , blaze-html
-                  , pandoc
-                  , pandoc-types
-                  , HTTP
-  ghc-options:      -Wall -Werror -threaded
-  Hs-source-dirs:   src
+  main-is: Main.hs
+  other-modules:
+      Paths_NasyMoe
+  hs-source-dirs:
+      src
+  ghc-options: -Wall -Werror -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      Cabal
+    , base
+    , filepath
+    , hakyll
+    , process
+    , text
   default-language: Haskell2010
