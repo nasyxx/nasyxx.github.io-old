@@ -146,7 +146,7 @@ main = hakyllWith config $ do
                                <> postCtxWithCats categories
                                <> postCtx
                                )
-                               (return posts)
+                               (pure posts)
                         <> defaultContext
 
             makeItem ""
@@ -172,7 +172,7 @@ main = hakyllWith config $ do
                                <> postCtxWithCats categories
                                <> postCtx
                                )
-                               (return posts)
+                               (pure posts)
                         <> defaultContext
 
             makeItem ""
@@ -263,7 +263,7 @@ main = hakyllWith config $ do
                             <> postCtxWithCats categories
                             <> postCtx
                             )
-                            (return posts)
+                            (pure posts)
                         <> constField "title"   "Nasy Land"
                         <> constField "showing" "Writings"
                         <> constField "index"   "true"
@@ -297,11 +297,11 @@ cleanRoute = customRoute createIndexRoute
 
 
 cleanIndexUrls :: Item String -> Compiler (Item String)
-cleanIndexUrls = return . fmap (withUrls cleanIndex)
+cleanIndexUrls = pure . fmap (withUrls cleanIndex)
 
 
 cleanIndexHtmls :: Item String -> Compiler (Item String)
-cleanIndexHtmls = return . fmap (replaceAll pattern' replacement)
+cleanIndexHtmls = pure . fmap (replaceAll pattern' replacement)
   where
     pattern'    = "/index.html"
     replacement = const "/"
@@ -370,7 +370,7 @@ cloudCtx = tagCloudField "cloud" 80 125
 getCategory' :: MonadMetadata m => Identifier -> m [String]
 getCategory' identifier = do
     metadata <- getMetadata identifier
-    return
+    pure
         $       fromMaybe []
         $       lookupStringList "categories" metadata
         `mplus` (map trim . splitAll "," <$> lookupString "categories" metadata)
