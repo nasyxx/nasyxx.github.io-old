@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 8c261c5360d54f933da9d37812dc0d0a6508bc16cf7e8a38515808e95bd8d03b
+-- hash: eacdba36bfda50bf32629356ccebb7aa1d2fea8b77d77677936db688480a8eb5
 
 name:           NasyMoe
 version:        0.1.2.0
@@ -24,9 +24,13 @@ executable site
   ghc-options: -Wall -Werror -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       Cabal
+    , HTTP
     , base
+    , blaze-html
     , filepath
     , hakyll
+    , pandoc
+    , pandoc-types
     , process
     , text
   default-language: Haskell2010
