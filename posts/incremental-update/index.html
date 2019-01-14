@@ -57,6 +57,15 @@ There are more things in heaven and earth, Horatio, than are dreamt.
 
         <link rel="stylesheet" href="../../styles/main.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-102577027-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'UA-102577027-1');
+        </script>
     </head>
     <body>
         <div class="container" , id="container">
@@ -305,31 +314,7 @@ There are more things in heaven and earth, Horatio, than are dreamt.
         <script src="../../scripts/main.js" charset="utf-8"></script>
 
         <!-- MathJax -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" async type="text/javascript"></script>
-
-        <script type="text/javascript">
-            window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-            ga('create', 'UA-102577027-1', 'auto');
-            ga('send', 'pageview');
-        </script>
-        <script async src="https://www.google-analytics.com/analytics.js"></script>
-        <script>
-            if (window.performance) {
-                // Gets the number of milliseconds since page load
-                // (and rounds the result since the value must be an integer).
-                var timeSincePageLoad = Math.round(performance.now());
-
-                // Sends the timing hit to Google Analytics.
-                ga('send', 'timing', 'JS Dependencies', 'load', timeSincePageLoad);
-            }
-            function handleOutboundLinkClicks(event) {
-                ga('send', 'event', {
-                eventCategory: 'Outbound Link',
-                eventAction: 'click',
-                eventLabel: event.target.href,
-                transport: 'beacon'
-                });
-            }
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" async type="text/javascript">
         </script>
     </body>
 </html>
