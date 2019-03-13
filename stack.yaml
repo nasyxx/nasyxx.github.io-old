@@ -1,4 +1,8 @@
-resolver: lts-12.26
+resolver: lts-13.12
 
 packages:
 - .
+
+extra-deps:
+- hakyll-4.12.5.1
+- lrucache-1.2.0.1
